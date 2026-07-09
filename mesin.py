@@ -45,6 +45,8 @@ for item in data_destinasi:
         .highlight {{ font-weight: bold; color: #e67e22; }}
         .btn-box {{ background: #2ecc71; padding: 15px; text-align: center; border-radius: 5px; margin: 20px 0; }}
         .btn-box a {{ color: white; text-decoration: none; font-weight: bold; font-size: 18px; display: block; }}
+        .hotel-box {{ background: #fff3cd; padding: 20px; border-left: 5px solid #ffc107; margin-top: 25px; border-radius: 5px; }}
+        .hotel-box h2 {{ margin-top: 0; color: #856404; font-size: 22px; }}
     </style>
 </head>
 <body>
@@ -55,8 +57,13 @@ for item in data_destinasi:
         <h2>Must-Visit Attractions</h2>
         <p>Don't miss the chance to explore <strong>{item['tempat']}</strong>, the ultimate iconic spots in the city.</p>
         
-        <div class="btn-box">
-            <a href="{LINK_AFFILIATE_HOTEL}" target="_blank" rel="nofollow">Find Cheap Hotels - 50% Off in {item['kota']} HERE ↗</a>
+        <div class="hotel-box">
+            <h2>Where to Stay & Recommended Hotels</h2>
+            <p><strong>Best Area to Stay:</strong> {item.get('area_terbaik', '')}</p>
+            <p><strong>Recommended Hotels:</strong> {item.get('hotel_rekomendasi', '')}</p>
+            <div class="btn-box" style="background: #e74c3c;">
+                <a href="{LINK_AFFILIATE_HOTEL}" target="_blank" rel="nofollow">Check Room Availability on Agoda ↗</a>
+            </div>
         </div>
 
         <h2>Estimated Budget & Expenses</h2>
