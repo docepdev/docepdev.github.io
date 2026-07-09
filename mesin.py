@@ -1,5 +1,6 @@
 import os
 import csv
+import datetime
 
 # ==========================================
 # 1. SAKELAR DUIT UTAMA
@@ -25,6 +26,9 @@ with open("destinasi.csv", mode="r", encoding="utf-8") as file:
 link_halaman = ""
 xml_urls = f"  <url>\n    <loc>{BASE_URL}</loc>\n  </url>\n"
 
+current_time = datetime.datetime.now()
+updated_str = current_time.strftime("Updated %B %Y")
+
 for item in data_destinasi:
     nama_file = f"liburan-ke-{item['kota'].lower().replace(' ', '-')}.html"
     link_halaman += f'<li><a href="{nama_file}">Budget Travel Guide to {item["kota"]}</a></li>\n'
@@ -37,7 +41,8 @@ for item in data_destinasi:
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Budget Travel Guide to {item['kota']}, {item['negara']}</title>
+    <meta name="description" content="Budget travel guide to {item['kota']}, {item['negara']}. Explore attractions, costs, and hotels ({updated_str}).">
+    <title>Budget Travel Guide to {item['kota']} ({updated_str})</title>
     <style>
         body {{ font-family: Arial, sans-serif; line-height: 1.6; margin: 40px; background-color: #f9f9f9; color: #333; }}
         .container {{ max-width: 800px; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); margin: 0 auto; }}
@@ -51,7 +56,7 @@ for item in data_destinasi:
 </head>
 <body>
     <div class="container">
-        <h1>Budget Travel Guide to {item['kota']} ({item['negara']})</h1>
+        <h1>Budget Travel Guide to {item['kota']} ({updated_str})</h1>
         <p>Looking for a vacation with <strong>{item['cuaca']}</strong> weather? <span class="highlight">{item['kota']}</span> is the perfect destination for you!</p>
         
         <h2>Must-Visit Attractions</h2>
