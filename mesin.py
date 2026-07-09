@@ -5,11 +5,11 @@ import datetime
 # ==========================================
 # 1. SAKELAR DUIT UTAMA
 # ==========================================
-ID_AGODA_LU = "1234567" 
+ID_AGODA = "1234567"
+ID_BOOKING = "99999"
+ID_KLOOK = "88888"
+ID_GETYOURGUIDE = "77777"
 BASE_URL = "https://docepdev.github.io/"
-
-LINK_AFFILIATE_HOTEL = f"https://www.agoda.com/partners/partnerlanding.aspx?pcs=1&cid={ID_AGODA_LU}"
-LINK_AFFILIATE_TIKET = "https://www.booking.com/index.html?aid=67890"
 
 # ==========================================
 # 2. DATABASE MASSAL (DARI CSV)
@@ -36,6 +36,16 @@ for item in data_destinasi:
     # Tambah ke daftar sitemap XML
     xml_urls += f"  <url>\n    <loc>{BASE_URL}{nama_file}</loc>\n  </url>\n"
     
+    kota_encoded = item['kota'].replace(' ', '%20')
+    if item['wilayah'].lower() == 'asia':
+        LINK_AFFILIATE_HOTEL = f"https://www.agoda.com/partners/partnerlanding.aspx?pcs=1&cid={ID_AGODA}&city={kota_encoded}"
+        LINK_AFFILIATE_TOUR = f"https://www.klook.com/search/result/?query={kota_encoded}&aid={ID_KLOOK}"
+        hotel_brand = "Agoda"
+    else:
+        LINK_AFFILIATE_HOTEL = f"https://www.booking.com/searchresults.html?city={kota_encoded}&aid={ID_BOOKING}"
+        LINK_AFFILIATE_TOUR = f"https://www.getyourguide.com/s/?q={kota_encoded}&partner_id={ID_GETYOURGUIDE}"
+        hotel_brand = "Booking.com"
+
     konten_html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,16 +77,16 @@ for item in data_destinasi:
             <p><strong>Best Area to Stay:</strong> {item.get('area_terbaik', '')}</p>
             <p><strong>Recommended Hotels:</strong> {item.get('hotel_rekomendasi', '')}</p>
             <div class="btn-box" style="background: #e74c3c; margin-bottom: 5px;">
-                <a href="{LINK_AFFILIATE_HOTEL}" target="_blank" rel="nofollow">Check Room Availability on Agoda ↗</a>
+                <a href="{LINK_AFFILIATE_HOTEL}" target="_blank" rel="nofollow">Check Room Availability on {hotel_brand} ↗</a>
             </div>
-            <p style="font-size: 12px; color: #7f8c8d; text-align: center; margin-top: 0;">🔒 Best Price Guarantee & Free Cancellation on Most Rooms via Agoda</p>
+            <p style="font-size: 12px; color: #7f8c8d; text-align: center; margin-top: 0;">🔒 Best Price Guarantee & Free Cancellation on Most Rooms via {hotel_brand}</p>
         </div>
 
         <h2>Estimated Budget & Expenses</h2>
         <p>To fully enjoy your trip here, we highly recommend preparing a budget around <span class="highlight">{item['biaya']}</span>.</p>
         
         <div class="btn-box" style="background: #3498db;">
-            <a href="{LINK_AFFILIATE_TIKET}" target="_blank" rel="nofollow">Check Promo Flights to {item['kota']} HERE ↗</a>
+            <a href="{LINK_AFFILIATE_TOUR}" target="_blank" rel="nofollow">Check Best Activities & Tours HERE ↗</a>
         </div>
 
         <hr>
