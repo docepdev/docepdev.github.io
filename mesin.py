@@ -61,9 +61,10 @@ for item in data_destinasi:
             <h2>Where to Stay & Recommended Hotels</h2>
             <p><strong>Best Area to Stay:</strong> {item.get('area_terbaik', '')}</p>
             <p><strong>Recommended Hotels:</strong> {item.get('hotel_rekomendasi', '')}</p>
-            <div class="btn-box" style="background: #e74c3c;">
+            <div class="btn-box" style="background: #e74c3c; margin-bottom: 5px;">
                 <a href="{LINK_AFFILIATE_HOTEL}" target="_blank" rel="nofollow">Check Room Availability on Agoda ↗</a>
             </div>
+            <p style="font-size: 12px; color: #7f8c8d; text-align: center; margin-top: 0;">🔒 Best Price Guarantee & Free Cancellation on Most Rooms via Agoda</p>
         </div>
 
         <h2>Estimated Budget & Expenses</h2>
