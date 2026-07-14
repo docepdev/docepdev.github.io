@@ -18,7 +18,7 @@ data_destinasi = [
     {"city": "Tropea", "country": "Italy", "region": "Europe", "main_attraction": "Spiaggia della Rotonda (Tropea Beach)", "target_keyword": "affordable beachfront cliff hotels in Tropea"},
     {"city": "Ksamil", "country": "Albania", "region": "Europe", "main_attraction": "Ksamil Islands", "target_keyword": "best apartments with sea view in Ksamil Riviera"},
     {"city": "Kotor", "country": "Montenegro", "region": "Europe", "main_attraction": "Bay of Kotor", "target_keyword": "top boutique guesthouses near Kotor Old Town"},
-    {"city": "Budva", "country": "Montenegro", "region": "Europe", "main_attraction": "best luxury spa resorts in Budva Montenegro"},
+    {"city": "Budva", "country": "Montenegro", "region": "Europe", "main_attraction": "Budva Citadel", "target_keyword": "best luxury spa resorts in Budva Montenegro"},
     {"city": "Tartu", "country": "Estonia", "region": "Europe", "main_attraction": "Tartu Old Town Square", "target_keyword": "romantic boutique hotels in Tartu city center"},
     {"city": "Plovdiv", "country": "Bulgaria", "region": "Europe", "main_attraction": "Ancient Theatre of Philippopolis", "target_keyword": "cheap historical hotels in Plovdiv Old Town"},
     {"city": "Ghent", "country": "Belgium", "region": "Europe", "main_attraction": "Gravensteen Castle", "target_keyword": "top rated canal view hotels in Ghent center"},
@@ -72,7 +72,6 @@ for item in data_destinasi:
     
     kota_encoded = item['city'].replace(' ', '%20')
     if item['region'].lower() == 'asia':
-        # Link Agoda dengan filter budget otomatis untuk mempermudah bule memilih
         LINK_LUXURY = f"https://www.agoda.com/partners/partnerlanding.aspx?pcs=1&cid={ID_AGODA}&city={kota_encoded}&starRating=5"
         LINK_MID = f"https://www.agoda.com/partners/partnerlanding.aspx?pcs=1&cid={ID_AGODA}&city={kota_encoded}&starRating=3,4"
         LINK_BUDGET = f"https://www.agoda.com/partners/partnerlanding.aspx?pcs=1&cid={ID_AGODA}&city={kota_encoded}&priceCur=USD"
@@ -80,7 +79,6 @@ for item in data_destinasi:
         hotel_brand = "Agoda"
         brand_color = "#e53935"
     else:
-        # Link Booking.com dengan parameter nri (intent transaksi)
         LINK_LUXURY = f"https://www.booking.com/searchresults.html?city={kota_encoded}&aid={ID_BOOKING}&nri_tier=luxury"
         LINK_MID = f"https://www.booking.com/searchresults.html?city={kota_encoded}&aid={ID_BOOKING}&nri_tier=mid"
         LINK_BUDGET = f"https://www.booking.com/searchresults.html?city={kota_encoded}&aid={ID_BOOKING}&nri_tier=budget"
@@ -88,7 +86,6 @@ for item in data_destinasi:
         hotel_brand = "Booking.com"
         brand_color = "#003580"
 
-    # TEMPLATE KONTEN MENURUT STANDAR UX EXPERT
     konten_html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -123,6 +120,7 @@ for item in data_destinasi:
         .back-link:hover {{ color: #0984e3; }}
         @media (max-width: 600px) {{ .tier-card {{ flex-direction: column; align-items: flex-start; gap: 15px; }} .btn-select {{ width: 100%; text-align: center; box-sizing: border-box; }} }}
     </style>
+    <!-- TRAVELPAYOUTS DRIVE SCRIPT -->
     <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1">
     (function () {{
         var script = document.createElement("script");
@@ -154,6 +152,7 @@ for item in data_destinasi:
         <p>Select the option that perfectly fits your travel style and budget requirements via {hotel_brand}:</p>
         
         <div class="hotel-tier-container">
+            <!-- LUXURY TIER -->
             <div class="tier-card">
                 <div class="tier-info">
                     <span class="tier-badge badge-lux">Premium Luxury</span>
@@ -163,6 +162,7 @@ for item in data_destinasi:
                 <a href="{LINK_LUXURY}" target="_blank" rel="nofollow" class="btn-select">View Luxury ↗</a>
             </div>
 
+            <!-- MID-RANGE TIER -->
             <div class="tier-card">
                 <div class="tier-info">
                     <span class="tier-badge badge-mid">Best Value</span>
@@ -172,13 +172,14 @@ for item in data_destinasi:
                 <a href="{LINK_MID}" target="_blank" rel="nofollow" class="btn-select">View Value ↗</a>
             </div>
 
+            <!-- BUDGET TIER -->
             <div class="tier-card">
                 <div class="tier-info">
                     <span class="tier-badge badge-bud">Budget Friendly</span>
                     <h3>Smart Budget Options</h3>
                     <p>Clean, highly recommended guesthouses and apartments for savvy spenders.</p>
                 </div>
-                <a href="{LINK_BUD}" target="_blank" rel="nofollow" class="btn-select">View Budget ↗</a>
+                <a href="{LINK_BUDGET}" target="_blank" rel="nofollow" class="btn-select">View Budget ↗</a>
             </div>
         </div>
 
@@ -222,6 +223,7 @@ beranda_html = f"""<!DOCTYPE html>
         .card p {{ margin: 0; font-size: 14px; color: #636e72; font-weight: 600; }}
         @media (max-width: 600px) {{ .hero h1 {{ font-size: 30px; }} }}
     </style>
+    <!-- TRAVELPAYOUTS DRIVE SCRIPT -->
     <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1">
     (function () {{
         var script = document.createElement("script");
@@ -257,5 +259,5 @@ with open("sitemap.xml", "w") as f:
     f.write(sitemap_xml)
 
 print("========================================")
-print("✅ SITEMAP & 30 HALAMAN HIGH-CONVERSION BERHASIL DICETAK!")
+print("✅ FIXED: SITEMAP & 30 HALAMAN HIGH-CONVERSION BERHASIL DICETAK!")
 print("========================================")
