@@ -1,4 +1,5 @@
 import os
+import csv
 import datetime
 
 # ==========================================
@@ -11,40 +12,13 @@ ID_GETYOURGUIDE = "77777"
 BASE_URL = "https://docepdev.github.io/"
 
 # ==========================================
-# 2. DATABASE MASSAL (30 DESTINASI EMAS 2026)
+# 2. DATABASE MASSAL (DARI CSV)
 # ==========================================
-data_destinasi = [
-    {"city": "Matera", "country": "Italy", "region": "Europe", "main_attraction": "Sassi di Matera", "target_keyword": "best luxury cave hotels in Matera Sassi"},
-    {"city": "Tropea", "country": "Italy", "region": "Europe", "main_attraction": "Spiaggia della Rotonda (Tropea Beach)", "target_keyword": "affordable beachfront cliff hotels in Tropea"},
-    {"city": "Ksamil", "country": "Albania", "region": "Europe", "main_attraction": "Ksamil Islands", "target_keyword": "best apartments with sea view in Ksamil Riviera"},
-    {"city": "Kotor", "country": "Montenegro", "region": "Europe", "main_attraction": "Bay of Kotor", "target_keyword": "top boutique guesthouses near Kotor Old Town"},
-    {"city": "Budva", "country": "Montenegro", "region": "Europe", "main_attraction": "Budva Citadel", "target_keyword": "best luxury spa resorts in Budva Montenegro"},
-    {"city": "Tartu", "country": "Estonia", "region": "Europe", "main_attraction": "Tartu Old Town Square", "target_keyword": "romantic boutique hotels in Tartu city center"},
-    {"city": "Plovdiv", "country": "Bulgaria", "region": "Europe", "main_attraction": "Ancient Theatre of Philippopolis", "target_keyword": "cheap historical hotels in Plovdiv Old Town"},
-    {"city": "Ghent", "country": "Belgium", "region": "Europe", "main_attraction": "Gravensteen Castle", "target_keyword": "top rated canal view hotels in Ghent center"},
-    {"city": "Lecce", "country": "Italy", "region": "Europe", "main_attraction": "Piazza del Duomo", "target_keyword": "best traditional bed and breakfast in Lecce Puglia"},
-    {"city": "Naxos", "country": "Greece", "region": "Europe", "main_attraction": "Portara (Temple of Apollo)", "target_keyword": "best quiet family beach resorts in Naxos island"},
-    {"city": "Milos", "country": "Greece", "region": "Europe", "main_attraction": "Sarakiniko Beach", "target_keyword": "luxury whitewashed hotels with private pool in Milos"},
-    {"city": "Riga", "country": "Latvia", "region": "Europe", "main_attraction": "House of the Black Heads", "target_keyword": "best affordable boutique hotels in Riga Old Town"},
-    {"city": "Ischia", "country": "Italy", "region": "Europe", "main_attraction": "Aragonese Castle", "target_keyword": "best volcanic thermal spa hotels in Ischia Italy"},
-    {"city": "Faro", "country": "Portugal", "region": "Europe", "main_attraction": "Ria Formosa Natural Park", "target_keyword": "cheap authentic guesthouses near Faro Algarve"},
-    {"city": "Sibiu", "country": "Romania", "region": "Europe", "main_attraction": "Piata Mare (Large Square)", "target_keyword": "best medieval places to stay in Sibiu Transylvania"},
-    {"city": "Labuan Bajo", "country": "Indonesia", "region": "Asia", "main_attraction": "Komodo National Park", "target_keyword": "luxury phinisi liveaboard tours Labuan Bajo"},
-    {"city": "Lombok", "country": "Indonesia", "region": "Asia", "main_attraction": "Mount Rinjani", "target_keyword": "best quiet beachfront eco villas in south Lombok"},
-    {"city": "Gili Air", "country": "Indonesia", "region": "Asia", "main_attraction": "Gili Air Coral Reefs", "target_keyword": "top sustainable diving resorts in Gili Air"},
-    {"city": "Mui Ne", "country": "Vietnam", "region": "Asia", "main_attraction": "Red Sand Dunes", "target_keyword": "best kitesurfing beach resorts near Mui Ne"},
-    {"city": "Sa Pa", "country": "Vietnam", "region": "Asia", "main_attraction": "Fansipan Mountain", "target_keyword": "best authentic mountain view homestays in Sa Pa"},
-    {"city": "Phu Quoc", "country": "Vietnam", "region": "Asia", "main_attraction": "Sao Beach", "target_keyword": "luxury private family beachfront resorts Phu Quoc"},
-    {"city": "Port Barton", "country": "Philippines", "region": "Asia", "main_attraction": "Port Barton Marine Park", "target_keyword": "affordable beachfront cottages in Port Barton Palawan"},
-    {"city": "Coron", "country": "Philippines", "region": "Asia", "main_attraction": "Kayangan Lake", "target_keyword": "best private island hopping tour packages from Coron"},
-    {"city": "Semporna", "country": "Malaysia", "region": "Asia", "main_attraction": "Sipadan Island", "target_keyword": "top scuba diving water bungalows in Semporna Sabah"},
-    {"city": "Kampot", "country": "Cambodia", "region": "Asia", "main_attraction": "Bokor National Park", "target_keyword": "best french colonial boutique hotels near Kampot river"},
-    {"city": "Koh Rong", "country": "Cambodia", "region": "Asia", "main_attraction": "Long Set Beach", "target_keyword": "best luxury white sand beach resorts in Koh Rong island"},
-    {"city": "Luang Prabang", "country": "Laos", "region": "Asia", "main_attraction": "Kuang Si Falls", "target_keyword": "best heritage boutique eco hotels in Luang Prabang"},
-    {"city": "Si Phan Don", "country": "Laos", "region": "Asia", "main_attraction": "Mekong River Waterfalls", "target_keyword": "best relaxing riverfront guesthouses in 4000 islands Laos"},
-    {"city": "Hoi An", "country": "Vietnam", "region": "Asia", "main_attraction": "Hoi An Ancient Town", "target_keyword": "romantic lantern view boutique hotels near Hoi An ancient town"},
-    {"city": "Chiang Rai", "country": "Thailand", "region": "Asia", "main_attraction": "White Temple (Wat Rong Khun)", "target_keyword": "best serene eco lodges near White Temple Chiang Rai"}
-]
+data_destinasi = []
+with open("destinasi.csv", mode="r", encoding="utf-8") as file:
+    csv_reader = csv.DictReader(file)
+    for row in csv_reader:
+        data_destinasi.append(row)
 
 # ==========================================
 # 3. PROSES PRODUKSI HTML & SITEMAP
@@ -56,140 +30,118 @@ current_time = datetime.datetime.now()
 updated_str = current_time.strftime("Updated %B %Y")
 
 for item in data_destinasi:
-    slug_keyword = item['target_keyword'].lower().replace(' ', '-').replace(',', '')
-    nama_file = f"{slug_keyword}.html"
-    judul_seo = item['target_keyword'].title()
+    nama_file = f"liburan-ke-{item['city'].lower().replace(' ', '-')}.html"
+    link_halaman += f'<li><a href="{nama_file}">Budget Travel Guide to {item["city"]}</a></li>\n'
     
-    link_halaman += f'''
-    <a href="{nama_file}" class="card-link">
-        <div class="card">
-            <h3>{judul_seo}</h3>
-            <p>📍 {item["city"]}, {item["country"]}</p>
-        </div>
-    </a>\n'''
-    
+    # Tambah ke daftar sitemap XML
     xml_urls += f"  <url>\n    <loc>{BASE_URL}{nama_file}</loc>\n  </url>\n"
     
     kota_encoded = item['city'].replace(' ', '%20')
     if item['region'].lower() == 'asia':
-        LINK_LUXURY = f"https://www.agoda.com/partners/partnerlanding.aspx?pcs=1&cid={ID_AGODA}&city={kota_encoded}&starRating=5"
-        LINK_MID = f"https://www.agoda.com/partners/partnerlanding.aspx?pcs=1&cid={ID_AGODA}&city={kota_encoded}&starRating=3,4"
-        LINK_BUDGET = f"https://www.agoda.com/partners/partnerlanding.aspx?pcs=1&cid={ID_AGODA}&city={kota_encoded}&priceCur=USD"
+        LINK_AFFILIATE_HOTEL = f"https://www.agoda.com/partners/partnerlanding.aspx?pcs=1&cid={ID_AGODA}&city={kota_encoded}"
         LINK_AFFILIATE_TOUR = f"https://www.klook.com/search/result/?query={kota_encoded}&aid={ID_KLOOK}"
         hotel_brand = "Agoda"
-        brand_color = "#e53935"
+        hotel_btn_color = "#e74c3c" # Merah
+        tour_btn_color = "#2ecc71" # Hijau
     else:
-        LINK_LUXURY = f"https://www.booking.com/searchresults.html?city={kota_encoded}&aid={ID_BOOKING}&nri_tier=luxury"
-        LINK_MID = f"https://www.booking.com/searchresults.html?city={kota_encoded}&aid={ID_BOOKING}&nri_tier=mid"
-        LINK_BUDGET = f"https://www.booking.com/searchresults.html?city={kota_encoded}&aid={ID_BOOKING}&nri_tier=budget"
+        LINK_AFFILIATE_HOTEL = f"https://www.booking.com/searchresults.html?city={kota_encoded}&aid={ID_BOOKING}"
         LINK_AFFILIATE_TOUR = f"https://www.getyourguide.com/s/?q={kota_encoded}&partner_id={ID_GETYOURGUIDE}"
         hotel_brand = "Booking.com"
-        brand_color = "#003580"
-
+        hotel_btn_color = "#003580" # Biru tua
+        tour_btn_color = "#2ecc71" # Hijau
+        
     konten_html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Curated by travel insiders: Discover the absolute {item['target_keyword']} and essential tips for visiting {item['main_attraction']} in {item['city']} ({updated_str}).">
-    <title>{judul_seo} | Insider Travel Guide</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {{ font-family: 'Poppins', sans-serif; line-height: 1.7; margin: 0; background-color: #f4f7f6; color: #2d3436; }}
-        .header {{ background: linear-gradient(135deg, #0984e3, #74b9ff); color: white; padding: 60px 20px; text-align: center; }}
-        .header h1 {{ margin: 0; font-size: 32px; font-weight: 700; text-shadow: 1px 1px 5px rgba(0,0,0,0.2); }}
-        .header p {{ font-size: 16px; opacity: 0.9; margin-top: 10px; }}
-        .container {{ max-width: 800px; background: white; padding: 40px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin: -30px auto 40px; position: relative; }}
-        h2 {{ color: #2d3436; font-size: 24px; border-bottom: 2px solid #f1f2f6; padding-bottom: 10px; margin-top: 40px; }}
-        .badge-expert {{ background: #00b894; color: white; padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; display: inline-block; margin-bottom: 15px; }}
-        .fomo-alert {{ background: #fff5f5; border: 1px solid #feb2b2; color: #c53030; padding: 15px; border-radius: 8px; font-size: 14px; font-weight: 600; margin: 20px 0; display: flex; align-items: center; gap: 10px; }}
-        .hotel-tier-container {{ margin-top: 25px; }}
-        .tier-card {{ background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease; }}
-        .tier-card:hover {{ box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-color: #cbd5e1; }}
-        .tier-info h3 {{ margin: 0; font-size: 18px; color: #2d3436; }}
-        .tier-info p {{ margin: 5px 0 0; font-size: 13px; color: #64748b; }}
-        .tier-badge {{ display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; margin-bottom: 5px; }}
-        .badge-lux {{ background: #fef3c7; color: #92400e; }}
-        .badge-mid {{ background: #dbeafe; color: #1e40af; }}
-        .badge-bud {{ background: #dcfce7; color: #166534; }}
-        .btn-select {{ background: {brand_color}; color: white; text-decoration: none; padding: 10px 18px; border-radius: 6px; font-weight: 600; font-size: 14px; transition: opacity 0.2s; }}
-        .btn-select:hover {{ opacity: 0.9; }}
-        .btn-tour {{ display: block; background: #00b894; color: white; text-align: center; padding: 16px; border-radius: 8px; font-weight: 600; font-size: 18px; text-decoration: none; margin: 25px 0; transition: transform 0.3s; }}
-        .btn-tour:hover {{ transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,184,148,0.3); }}
-        .back-link {{ display: inline-block; margin-top: 30px; color: #636e72; text-decoration: none; font-weight: 600; }}
-        .back-link:hover {{ color: #0984e3; }}
-        @media (max-width: 600px) {{ .tier-card {{ flex-direction: column; align-items: flex-start; gap: 15px; }} .btn-select {{ width: 100%; text-align: center; box-sizing: border-box; }} }}
-    </style>
-    <!-- TRAVELPAYOUTS DRIVE SCRIPT -->
+    <meta name="description" content="Budget travel guide to {item['city']}, {item['country']}. Explore attractions, costs, and hotels ({updated_str}).">
+    <title>Budget Travel Guide to {item['city']} ({updated_str})</title>
+    
+    <!-- Travelpayouts Tracking Script -->
     <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1">
-    (function () {{
-        var script = document.createElement("script");
-        script.async = 1;
-        script.src = 'https://emrldtp.com/NTQ4NDMx.js?t=548431';
-        document.head.appendChild(script);
-    }})();
+      (function () {{
+          var script = document.createElement("script");
+          script.async = 1;
+          script.src = 'https://emrldtp.com/NTQ4NDMx.js?t=548431';
+          document.head.appendChild(script);
+      }})();
     </script>
+    
+    <style>
+        body {{ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; margin: 40px; background-color: #f0f2f5; color: #333; }}
+        .container {{ max-width: 800px; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin: 0 auto; }}
+        h1 {{ color: #2c3e50; font-size: 2.2em; margin-bottom: 5px; }}
+        .badge {{ background: #f1c40f; color: #856404; padding: 5px 12px; border-radius: 20px; font-weight: bold; font-size: 14px; display: inline-block; margin-bottom: 20px; }}
+        .highlight {{ font-weight: bold; color: #e67e22; }}
+        
+        .fomo-alert {{ background-color: #fff3cd; color: #856404; padding: 12px; border-left: 4px solid #ffc107; margin: 25px 0 15px 0; font-weight: bold; font-size: 15px; border-radius: 0 4px 4px 0; }}
+        
+        .hotel-tier {{ border: 1px solid #e1e8ed; border-radius: 8px; margin-bottom: 20px; padding: 20px; background: #fafbfc; }}
+        .hotel-tier h3 {{ margin-top: 0; color: #2c3e50; border-bottom: 2px solid #e1e8ed; padding-bottom: 10px; margin-bottom: 15px; font-size: 1.2em; }}
+        .hotel-name {{ font-size: 1.1em; font-weight: bold; color: #2980b9; margin-bottom: 15px; display: block; }}
+        
+        .btn-box {{ padding: 12px; text-align: center; border-radius: 6px; margin: 15px 0 5px 0; }}
+        .btn-box a {{ color: white; text-decoration: none; font-weight: bold; font-size: 16px; display: block; }}
+        .micro-copy {{ font-size: 12px; color: #7f8c8d; text-align: center; margin-top: 0; }}
+        
+        .tour-section {{ margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; }}
+    </style>
 </head>
 <body>
-    <div class="header">
-        <h1>{judul_seo}</h1>
-        <p>Curated by Senior Travel Editors — {updated_str}</p>
-    </div>
-    
     <div class="container">
-        <div class="badge-expert">✓ Local Expert Verified</div>
-        <p>Finding the absolute <strong>{item['target_keyword']}</strong> can completely transform your experience in <span style="font-weight: 600; color: #0984e3;">{item['city']}, {item['country']}</span>. Instead of relying on generalized booking algorithms, our editorial team has mapped out the top accommodation options based on location efficiency, authentic architecture, and guest satisfaction scores for this season.</p>
+        <h1>Budget Travel Guide to {item['city']} ({updated_str})</h1>
+        <div class="badge">✓ Local Expert Verified</div>
         
-        <h2>📍 Essential Stop: {item['main_attraction']}</h2>
-        <p>Make no mistake: <strong>{item['main_attraction']}</strong> is the main reason travelers flock to {item['city']}. To maximize your time, we strongly advise staying within short walking distance or direct transit routes to this specific landmark, saving you hours of unnecessary commuting.</p>
+        <p>Looking for a vacation with <strong>perfect</strong> weather? <span class="highlight">{item['city']}</span> is the perfect destination for you!</p>
+        
+        <h2>Must-Visit Attractions</h2>
+        <p>Don't miss the chance to explore <strong>{item['main_attraction']}</strong>, the ultimate iconic spots in the city.</p>
         
         <div class="fomo-alert">
-            <span>🔥</span> 
-            <span>Demand Warning: Over 84% of highly-rated properties near {item['city']} are already fully booked for the upcoming travel window. Secure your room now with free cancellation to lock in current rates.</span>
+            🔥 <strong>Urgent:</strong> 87% of accommodations in {item['city']} for upcoming dates are already booked! Secure your stay immediately.
+        </div>
+        
+        <h2>Where to Stay in {item['city']} (Top Recommended Areas: City Center)</h2>
+        
+        <div class="hotel-tier">
+            <h3>⭐ Premium Luxury (5-Star Experience)</h3>
+            <span class="hotel-name">{item.get('hotel_premium', 'Luxury Hotel')}</span>
+            <div class="btn-box" style="background: {hotel_btn_color};">
+                <a href="{LINK_AFFILIATE_HOTEL}" target="_blank" rel="nofollow">Check Availability on {hotel_brand} ↗</a>
+            </div>
+            <p class="micro-copy">🔒 Best Price Guarantee & Free Cancellation on Most Rooms via {hotel_brand}</p>
         </div>
 
-        <h2>🏨 Curated Accommodations in {item['city']}</h2>
-        <p>Select the option that perfectly fits your travel style and budget requirements via {hotel_brand}:</p>
-        
-        <div class="hotel-tier-container">
-            <!-- LUXURY TIER -->
-            <div class="tier-card">
-                <div class="tier-info">
-                    <span class="tier-badge badge-lux">Premium Luxury</span>
-                    <h3>5-Star Boutique & Resorts</h3>
-                    <p>Unmatched views near {item['main_attraction']}, top-tier amenities, and flawless reviews.</p>
-                </div>
-                <a href="{LINK_LUXURY}" target="_blank" rel="nofollow" class="btn-select">View Luxury ↗</a>
+        <div class="hotel-tier">
+            <h3>👍 Best Value (Mid-Range & Comfort)</h3>
+            <span class="hotel-name">{item.get('hotel_midrange', 'Mid-Range Hotel')}</span>
+            <div class="btn-box" style="background: {hotel_btn_color};">
+                <a href="{LINK_AFFILIATE_HOTEL}" target="_blank" rel="nofollow">Check Availability on {hotel_brand} ↗</a>
             </div>
+            <p class="micro-copy">🔒 Best Price Guarantee & Free Cancellation on Most Rooms via {hotel_brand}</p>
+        </div>
 
-            <!-- MID-RANGE TIER -->
-            <div class="tier-card">
-                <div class="tier-info">
-                    <span class="tier-badge badge-mid">Best Value</span>
-                    <h3>Mid-Range & Comfort Stays</h3>
-                    <p>The perfect balance between affordability, local charm, and modern comfort.</p>
-                </div>
-                <a href="{LINK_MID}" target="_blank" rel="nofollow" class="btn-select">View Value ↗</a>
+        <div class="hotel-tier">
+            <h3>🎒 Budget Friendly (Smart Budget Options)</h3>
+            <span class="hotel-name">{item.get('hotel_budget', 'Budget Hostel')}</span>
+            <div class="btn-box" style="background: {hotel_btn_color};">
+                <a href="{LINK_AFFILIATE_HOTEL}" target="_blank" rel="nofollow">Check Availability on {hotel_brand} ↗</a>
             </div>
+            <p class="micro-copy">🔒 Best Price Guarantee & Free Cancellation on Most Rooms via {hotel_brand}</p>
+        </div>
 
-            <!-- BUDGET TIER -->
-            <div class="tier-card">
-                <div class="tier-info">
-                    <span class="tier-badge badge-bud">Budget Friendly</span>
-                    <h3>Smart Budget Options</h3>
-                    <p>Clean, highly recommended guesthouses and apartments for savvy spenders.</p>
-                </div>
-                <a href="{LINK_BUDGET}" target="_blank" rel="nofollow" class="btn-select">View Budget ↗</a>
+        <div class="tour-section">
+            <h2>Estimated Budget & Expenses</h2>
+            <p>To fully enjoy your trip here, we highly recommend preparing a budget around <span class="highlight">$500 - $1,500</span>.</p>
+            
+            <div class="btn-box" style="background: {tour_btn_color};">
+                <a href="{LINK_AFFILIATE_TOUR}" target="_blank" rel="nofollow">Check Best Activities & Tours HERE ↗</a>
             </div>
         </div>
 
-        <h2>🗺️ Handpicked Tours & Local Experiences</h2>
-        <p>Do not just sightsee—immerse yourself. We highly recommend booking a dedicated guided tour around {item['city']} to bypass the heavy lines at major attractions and gain access to spots only locals know about.</p>
-        
-        <a href="{LINK_AFFILIATE_TOUR}" target="_blank" rel="nofollow" class="btn-tour">Explore Top-Rated Tours & Activities ↗</a>
-
-        <hr style="border: none; border-top: 1px solid #e2e8f0; margin-top: 40px;">
-        <a href="index.html" class="back-link">← Back to Global Travel Portal</a>
+        <hr style="margin-top: 40px; border: 0; border-top: 1px solid #eee;">
+        <p><a href="index.html" style="color: #3498db; text-decoration: none; font-weight: bold;">← Back to Homepage</a></p>
     </div>
 </body>
 </html>"""
@@ -198,52 +150,32 @@ for item in data_destinasi:
         f.write(konten_html)
 
 # ==========================================
-# 4. CETAK INDEX & SITEMAP.XML (DESAIN GRID)
+# 4. CETAK INDEX & SITEMAP.XML
 # ==========================================
 beranda_html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global Travel Guide Portal | Insider Tips</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Global Travel Guide Portal</title>
     <style>
-        body {{ font-family: 'Poppins', sans-serif; background-color: #f4f7f6; margin: 0; color: #2d3436; }}
-        .hero {{ background: #000 url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=2000&auto=format&fit=crop') center/cover; padding: 100px 20px; text-align: center; color: white; position: relative; }}
-        .hero::before {{ content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); }}
-        .hero-content {{ position: relative; z-index: 1; }}
-        .hero h1 {{ font-size: 40px; margin-bottom: 10px; font-weight: 700; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }}
-        .hero p {{ font-size: 18px; max-width: 600px; margin: 0 auto; opacity: 0.9; }}
-        .container {{ max-width: 1100px; margin: -40px auto 50px; padding: 20px; position: relative; z-index: 2; }}
-        .grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }}
-        .card-link {{ text-decoration: none; color: inherit; }}
-        .card {{ background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; border-top: 4px solid #0984e3; height: 100%; box-sizing: border-box; }}
-        .card:hover {{ transform: translateY(-5px); box-shadow: 0 12px 25px rgba(0,0,0,0.1); border-top: 4px solid #00b894; }}
-        .card h3 {{ margin: 0 0 10px; font-size: 18px; color: #2d3436; line-height: 1.4; }}
-        .card p {{ margin: 0; font-size: 14px; color: #636e72; font-weight: 600; }}
-        @media (max-width: 600px) {{ .hero h1 {{ font-size: 30px; }} }}
+        body {{ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; margin: 40px; background-color: #f4f4f9; }}
+        .container {{ max-width: 800px; background: white; padding: 40px; border-radius: 12px; margin: 0 auto; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }}
+        h1 {{ color: #2c3e50; text-align: center; margin-bottom: 30px; }}
+        ul {{ list-style-type: none; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }}
+        li {{ padding: 15px; background: #fafbfc; border: 1px solid #e1e8ed; border-radius: 8px; border-left: 5px solid #2ecc71; transition: transform 0.2s; }}
+        li:hover {{ transform: translateY(-3px); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }}
+        a {{ color: #2c3e50; text-decoration: none; font-size: 16px; font-weight: 600; display: block; }}
+        @media (max-width: 600px) {{ ul {{ grid-template-columns: 1fr; }} }}
     </style>
-    <!-- TRAVELPAYOUTS DRIVE SCRIPT -->
-    <script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1">
-    (function () {{
-        var script = document.createElement("script");
-        script.async = 1;
-        script.src = 'https://emrldtp.com/NTQ4NDMx.js?t=548431';
-        document.head.appendChild(script);
-    }})();
-    </script>
 </head>
 <body>
-    <div class="hero">
-        <div class="hero-content">
-            <h1>Global Travel Guide Portal</h1>
-            <p>Discover insider travel guides, hidden gems, and the best affordable stays worldwide.</p>
-        </div>
-    </div>
     <div class="container">
-        <div class="grid">
+        <h1>Global Travel Guide Portal</h1>
+        <p style="text-align: center; color: #7f8c8d; margin-bottom: 30px;">Discover Local Expert Verified travel guides to major cities worldwide.</p>
+        <ul>
             {link_halaman}
-        </div>
+        </ul>
     </div>
 </body>
 </html>"""
@@ -258,6 +190,6 @@ sitemap_xml = f"""<?xml version="1.0" encoding="UTF-8"?>
 with open("sitemap.xml", "w") as f:
     f.write(sitemap_xml)
 
-print("========================================")
-print("✅ FIXED: SITEMAP & 30 HALAMAN HIGH-CONVERSION BERHASIL DICETAK!")
-print("========================================")
+print("---")
+print("SITEMAP & HTML GENERATED SUCCESSFULY!")
+print("---")
