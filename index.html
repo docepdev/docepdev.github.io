@@ -5,18 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Global Travel Guide Portal</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
-        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; margin: 0; padding: 40px 20px; color: #1e293b; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-        h1 { text-align: center; font-size: 2.75rem; color: #0f172a; margin-bottom: 10px; font-weight: 700; }
-        .subtitle { text-align: center; color: #64748b; margin-bottom: 40px; font-size: 1.1rem; }
-        .grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
-        .card-link { text-decoration: none; color: inherit; }
-        .card { background: #ffffff; border-radius: 12px; padding: 24px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03); transition: transform 0.3s ease, box-shadow 0.3s ease; border: 1px solid #e2e8f0; position: relative; }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
-        .card h3 { margin: 10px 0 5px 0; font-size: 1.25rem; color: #0f172a; font-weight: 700; }
-        .card p { margin: 0; color: #64748b; font-size: 0.95rem; }
-        .region-badge { display: inline-block; padding: 4px 10px; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; color: white; margin-bottom: 8px; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #FFFFFF; margin: 0; padding: 20px; color: #111111; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 10px; }
+        h1 { text-align: center; font-size: 28px; font-weight: 900; color: #000000; margin-bottom: 5px; }
+        .subtitle { text-align: center; color: #444444; font-size: 16px; margin-bottom: 30px; font-weight: 600; }
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; }
+        .card-link { text-decoration: none; color: inherit; display: block; }
+        .card { background: #FFFFFF; border: 2px solid #E2E2E2; border-radius: 8px; padding: 15px; position: relative; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: border-color 0.2s; }
+        .card:hover { border-color: #0071C2; }
+        .card h3 { margin: 5px 0; font-size: 18px; font-weight: 800; color: #0071C2; }
+        .card p { margin: 0; color: #333333; font-size: 14px; font-weight: 600; }
+        .badges-row { display: flex; gap: 8px; margin-bottom: 8px; }
+        .region-badge { padding: 3px 8px; border-radius: 4px; font-size: 12px; font-weight: 700; color: #FFFFFF; text-transform: uppercase; }
+        .trending-badge { background-color: #CC0000; color: #FFFFFF; padding: 3px 8px; border-radius: 4px; font-size: 12px; font-weight: 700; text-transform: uppercase; animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        @media (max-width: 600px) { .grid-container { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -27,7 +30,10 @@
             
             <a href="liburan-ke-bali.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #2ecc71;">Asia</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #008009;">Asia</span>
+                        
+                    </div>
                     <h3>Bali</h3>
                     <p>Indonesia</p>
                 </div>
@@ -35,7 +41,10 @@
 
             <a href="liburan-ke-tokyo.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #2ecc71;">Asia</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #008009;">Asia</span>
+                        
+                    </div>
                     <h3>Tokyo</h3>
                     <p>Japan</p>
                 </div>
@@ -43,7 +52,10 @@
 
             <a href="liburan-ke-paris.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        
+                    </div>
                     <h3>Paris</h3>
                     <p>France</p>
                 </div>
@@ -51,7 +63,10 @@
 
             <a href="liburan-ke-new-york.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        <span class="trending-badge">Trending 🔥</span>
+                    </div>
                     <h3>New York</h3>
                     <p>United States</p>
                 </div>
@@ -59,7 +74,10 @@
 
             <a href="liburan-ke-seoul.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #2ecc71;">Asia</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #008009;">Asia</span>
+                        
+                    </div>
                     <h3>Seoul</h3>
                     <p>South Korea</p>
                 </div>
@@ -67,7 +85,10 @@
 
             <a href="liburan-ke-london.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        
+                    </div>
                     <h3>London</h3>
                     <p>United Kingdom</p>
                 </div>
@@ -75,7 +96,10 @@
 
             <a href="liburan-ke-bangkok.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #2ecc71;">Asia</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #008009;">Asia</span>
+                        <span class="trending-badge">Trending 🔥</span>
+                    </div>
                     <h3>Bangkok</h3>
                     <p>Thailand</p>
                 </div>
@@ -83,7 +107,10 @@
 
             <a href="liburan-ke-sydney.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #2ecc71;">Asia</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #008009;">Asia</span>
+                        <span class="trending-badge">Trending 🔥</span>
+                    </div>
                     <h3>Sydney</h3>
                     <p>Australia</p>
                 </div>
@@ -91,7 +118,10 @@
 
             <a href="liburan-ke-dubai.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #2ecc71;">Asia</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #008009;">Asia</span>
+                        
+                    </div>
                     <h3>Dubai</h3>
                     <p>UAE</p>
                 </div>
@@ -99,7 +129,10 @@
 
             <a href="liburan-ke-singapore.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #2ecc71;">Asia</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #008009;">Asia</span>
+                        <span class="trending-badge">Trending 🔥</span>
+                    </div>
                     <h3>Singapore</h3>
                     <p>Singapore</p>
                 </div>
@@ -107,7 +140,10 @@
 
             <a href="liburan-ke-kuala-lumpur.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #2ecc71;">Asia</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #008009;">Asia</span>
+                        
+                    </div>
                     <h3>Kuala Lumpur</h3>
                     <p>Malaysia</p>
                 </div>
@@ -115,7 +151,10 @@
 
             <a href="liburan-ke-rome.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        <span class="trending-badge">Trending 🔥</span>
+                    </div>
                     <h3>Rome</h3>
                     <p>Italy</p>
                 </div>
@@ -123,7 +162,10 @@
 
             <a href="liburan-ke-barcelona.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        
+                    </div>
                     <h3>Barcelona</h3>
                     <p>Spain</p>
                 </div>
@@ -131,7 +173,10 @@
 
             <a href="liburan-ke-amsterdam.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        
+                    </div>
                     <h3>Amsterdam</h3>
                     <p>Netherlands</p>
                 </div>
@@ -139,7 +184,10 @@
 
             <a href="liburan-ke-berlin.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        
+                    </div>
                     <h3>Berlin</h3>
                     <p>Germany</p>
                 </div>
@@ -147,7 +195,10 @@
 
             <a href="liburan-ke-hong-kong.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #2ecc71;">Asia</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #008009;">Asia</span>
+                        
+                    </div>
                     <h3>Hong Kong</h3>
                     <p>China</p>
                 </div>
@@ -155,7 +206,10 @@
 
             <a href="liburan-ke-istanbul.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        
+                    </div>
                     <h3>Istanbul</h3>
                     <p>Turkey</p>
                 </div>
@@ -163,7 +217,10 @@
 
             <a href="liburan-ke-cairo.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        
+                    </div>
                     <h3>Cairo</h3>
                     <p>Egypt</p>
                 </div>
@@ -171,7 +228,10 @@
 
             <a href="liburan-ke-toronto.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        
+                    </div>
                     <h3>Toronto</h3>
                     <p>Canada</p>
                 </div>
@@ -179,7 +239,10 @@
 
             <a href="liburan-ke-maldives.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #2ecc71;">Asia</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #008009;">Asia</span>
+                        
+                    </div>
                     <h3>Maldives</h3>
                     <p>Maldives</p>
                 </div>
@@ -187,7 +250,10 @@
 
             <a href="liburan-ke-kyoto.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #2ecc71;">Asia</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #008009;">Asia</span>
+                        
+                    </div>
                     <h3>Kyoto</h3>
                     <p>Japan</p>
                 </div>
@@ -195,7 +261,10 @@
 
             <a href="liburan-ke-phuket.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #2ecc71;">Asia</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #008009;">Asia</span>
+                        
+                    </div>
                     <h3>Phuket</h3>
                     <p>Thailand</p>
                 </div>
@@ -203,7 +272,10 @@
 
             <a href="liburan-ke-hanoi.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #2ecc71;">Asia</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #008009;">Asia</span>
+                        <span class="trending-badge">Trending 🔥</span>
+                    </div>
                     <h3>Hanoi</h3>
                     <p>Vietnam</p>
                 </div>
@@ -211,7 +283,10 @@
 
             <a href="liburan-ke-manila.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #2ecc71;">Asia</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #008009;">Asia</span>
+                        
+                    </div>
                     <h3>Manila</h3>
                     <p>Philippines</p>
                 </div>
@@ -219,7 +294,10 @@
 
             <a href="liburan-ke-taipei.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #2ecc71;">Asia</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #008009;">Asia</span>
+                        <span class="trending-badge">Trending 🔥</span>
+                    </div>
                     <h3>Taipei</h3>
                     <p>Taiwan</p>
                 </div>
@@ -227,7 +305,10 @@
 
             <a href="liburan-ke-zurich.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        
+                    </div>
                     <h3>Zurich</h3>
                     <p>Switzerland</p>
                 </div>
@@ -235,7 +316,10 @@
 
             <a href="liburan-ke-milan.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        
+                    </div>
                     <h3>Milan</h3>
                     <p>Italy</p>
                 </div>
@@ -243,7 +327,10 @@
 
             <a href="liburan-ke-los-angeles.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        <span class="trending-badge">Trending 🔥</span>
+                    </div>
                     <h3>Los Angeles</h3>
                     <p>United States</p>
                 </div>
@@ -251,7 +338,10 @@
 
             <a href="liburan-ke-cape-town.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        <span class="trending-badge">Trending 🔥</span>
+                    </div>
                     <h3>Cape Town</h3>
                     <p>South Africa</p>
                 </div>
@@ -259,7 +349,10 @@
 
             <a href="liburan-ke-rio-de-janeiro.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        
+                    </div>
                     <h3>Rio de Janeiro</h3>
                     <p>Brazil</p>
                 </div>
@@ -267,7 +360,10 @@
 
             <a href="liburan-ke-shanghai.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #2ecc71;">Asia</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #008009;">Asia</span>
+                        
+                    </div>
                     <h3>Shanghai</h3>
                     <p>China</p>
                 </div>
@@ -275,7 +371,10 @@
 
             <a href="liburan-ke-madrid.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        
+                    </div>
                     <h3>Madrid</h3>
                     <p>Spain</p>
                 </div>
@@ -283,7 +382,10 @@
 
             <a href="liburan-ke-vienna.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        
+                    </div>
                     <h3>Vienna</h3>
                     <p>Austria</p>
                 </div>
@@ -291,7 +393,10 @@
 
             <a href="liburan-ke-prague.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        
+                    </div>
                     <h3>Prague</h3>
                     <p>Czech Republic</p>
                 </div>
@@ -299,7 +404,10 @@
 
             <a href="liburan-ke-menton.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        <span class="trending-badge">Trending 🔥</span>
+                    </div>
                     <h3>Menton</h3>
                     <p>France</p>
                 </div>
@@ -307,7 +415,10 @@
 
             <a href="liburan-ke-colmar.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        <span class="trending-badge">Trending 🔥</span>
+                    </div>
                     <h3>Colmar</h3>
                     <p>France</p>
                 </div>
@@ -315,7 +426,10 @@
 
             <a href="liburan-ke-matera.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        
+                    </div>
                     <h3>Matera</h3>
                     <p>Italy</p>
                 </div>
@@ -323,7 +437,10 @@
 
             <a href="liburan-ke-alberobello.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        
+                    </div>
                     <h3>Alberobello</h3>
                     <p>Italy</p>
                 </div>
@@ -331,7 +448,10 @@
 
             <a href="liburan-ke-zell-am-see.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        <span class="trending-badge">Trending 🔥</span>
+                    </div>
                     <h3>Zell am See</h3>
                     <p>Austria</p>
                 </div>
@@ -339,7 +459,10 @@
 
             <a href="liburan-ke-bled.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        <span class="trending-badge">Trending 🔥</span>
+                    </div>
                     <h3>Bled</h3>
                     <p>Slovenia</p>
                 </div>
@@ -347,7 +470,10 @@
 
             <a href="liburan-ke-sintra.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        
+                    </div>
                     <h3>Sintra</h3>
                     <p>Portugal</p>
                 </div>
@@ -355,7 +481,10 @@
 
             <a href="liburan-ke-ronda.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        
+                    </div>
                     <h3>Ronda</h3>
                     <p>Spain</p>
                 </div>
@@ -363,7 +492,10 @@
 
             <a href="liburan-ke-mostar.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        
+                    </div>
                     <h3>Mostar</h3>
                     <p>Bosnia & Herzegovina</p>
                 </div>
@@ -371,7 +503,10 @@
 
             <a href="liburan-ke-kotor.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        <span class="trending-badge">Trending 🔥</span>
+                    </div>
                     <h3>Kotor</h3>
                     <p>Montenegro</p>
                 </div>
@@ -379,7 +514,10 @@
 
             <a href="liburan-ke-piran.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        
+                    </div>
                     <h3>Piran</h3>
                     <p>Slovenia</p>
                 </div>
@@ -387,7 +525,10 @@
 
             <a href="liburan-ke-hvar.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        
+                    </div>
                     <h3>Hvar</h3>
                     <p>Croatia</p>
                 </div>
@@ -395,7 +536,10 @@
 
             <a href="liburan-ke-rovinj.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        
+                    </div>
                     <h3>Rovinj</h3>
                     <p>Croatia</p>
                 </div>
@@ -403,7 +547,10 @@
 
             <a href="liburan-ke-gdansk.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        <span class="trending-badge">Trending 🔥</span>
+                    </div>
                     <h3>Gdansk</h3>
                     <p>Poland</p>
                 </div>
@@ -411,7 +558,10 @@
 
             <a href="liburan-ke-wroclaw.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        
+                    </div>
                     <h3>Wroclaw</h3>
                     <p>Poland</p>
                 </div>
@@ -419,7 +569,10 @@
 
             <a href="liburan-ke-brasov.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        
+                    </div>
                     <h3>Brasov</h3>
                     <p>Romania</p>
                 </div>
@@ -427,7 +580,10 @@
 
             <a href="liburan-ke-sibiu.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        <span class="trending-badge">Trending 🔥</span>
+                    </div>
                     <h3>Sibiu</h3>
                     <p>Romania</p>
                 </div>
@@ -435,7 +591,10 @@
 
             <a href="liburan-ke-cesky-krumlov.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        <span class="trending-badge">Trending 🔥</span>
+                    </div>
                     <h3>Cesky Krumlov</h3>
                     <p>Czech Republic</p>
                 </div>
@@ -443,7 +602,10 @@
 
             <a href="liburan-ke-karlovy-vary.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        
+                    </div>
                     <h3>Karlovy Vary</h3>
                     <p>Czech Republic</p>
                 </div>
@@ -451,7 +613,10 @@
 
             <a href="liburan-ke-mechelen.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        <span class="trending-badge">Trending 🔥</span>
+                    </div>
                     <h3>Mechelen</h3>
                     <p>Belgium</p>
                 </div>
@@ -459,7 +624,10 @@
 
             <a href="liburan-ke-ghent.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        <span class="trending-badge">Trending 🔥</span>
+                    </div>
                     <h3>Ghent</h3>
                     <p>Belgium</p>
                 </div>
@@ -467,7 +635,10 @@
 
             <a href="liburan-ke-dinant.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        
+                    </div>
                     <h3>Dinant</h3>
                     <p>Belgium</p>
                 </div>
@@ -475,7 +646,10 @@
 
             <a href="liburan-ke-giethoorn.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        
+                    </div>
                     <h3>Giethoorn</h3>
                     <p>Netherlands</p>
                 </div>
@@ -483,7 +657,10 @@
 
             <a href="liburan-ke-maastricht.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        <span class="trending-badge">Trending 🔥</span>
+                    </div>
                     <h3>Maastricht</h3>
                     <p>Netherlands</p>
                 </div>
@@ -491,7 +668,10 @@
 
             <a href="liburan-ke-bergen.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        <span class="trending-badge">Trending 🔥</span>
+                    </div>
                     <h3>Bergen</h3>
                     <p>Norway</p>
                 </div>
@@ -499,7 +679,10 @@
 
             <a href="liburan-ke-reine.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        
+                    </div>
                     <h3>Reine</h3>
                     <p>Norway</p>
                 </div>
@@ -507,7 +690,10 @@
 
             <a href="liburan-ke-rovaniemi.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        
+                    </div>
                     <h3>Rovaniemi</h3>
                     <p>Finland</p>
                 </div>
@@ -515,7 +701,10 @@
 
             <a href="liburan-ke-porvoo.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        
+                    </div>
                     <h3>Porvoo</h3>
                     <p>Finland</p>
                 </div>
@@ -523,7 +712,10 @@
 
             <a href="liburan-ke-tallinn.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        
+                    </div>
                     <h3>Tallinn</h3>
                     <p>Estonia</p>
                 </div>
@@ -531,7 +723,10 @@
 
             <a href="liburan-ke-riga.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        
+                    </div>
                     <h3>Riga</h3>
                     <p>Latvia</p>
                 </div>
@@ -539,7 +734,10 @@
 
             <a href="liburan-ke-vilnius.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        
+                    </div>
                     <h3>Vilnius</h3>
                     <p>Lithuania</p>
                 </div>
@@ -547,7 +745,10 @@
 
             <a href="liburan-ke-trakai.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        <span class="trending-badge">Trending 🔥</span>
+                    </div>
                     <h3>Trakai</h3>
                     <p>Lithuania</p>
                 </div>
@@ -555,7 +756,10 @@
 
             <a href="liburan-ke-ohrid.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        
+                    </div>
                     <h3>Ohrid</h3>
                     <p>North Macedonia</p>
                 </div>
@@ -563,7 +767,10 @@
 
             <a href="liburan-ke-plovdiv.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        <span class="trending-badge">Trending 🔥</span>
+                    </div>
                     <h3>Plovdiv</h3>
                     <p>Bulgaria</p>
                 </div>
@@ -571,7 +778,10 @@
 
             <a href="liburan-ke-veliko-tarnovo.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        
+                    </div>
                     <h3>Veliko Tarnovo</h3>
                     <p>Bulgaria</p>
                 </div>
@@ -579,7 +789,10 @@
 
             <a href="liburan-ke-novi-sad.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        
+                    </div>
                     <h3>Novi Sad</h3>
                     <p>Serbia</p>
                 </div>
@@ -587,7 +800,10 @@
 
             <a href="liburan-ke-subotica.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        
+                    </div>
                     <h3>Subotica</h3>
                     <p>Serbia</p>
                 </div>
@@ -595,7 +811,10 @@
 
             <a href="liburan-ke-eger.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        
+                    </div>
                     <h3>Eger</h3>
                     <p>Hungary</p>
                 </div>
@@ -603,7 +822,10 @@
 
             <a href="liburan-ke-szeged.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        
+                    </div>
                     <h3>Szeged</h3>
                     <p>Hungary</p>
                 </div>
@@ -611,7 +833,10 @@
 
             <a href="liburan-ke-graz.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        
+                    </div>
                     <h3>Graz</h3>
                     <p>Austria</p>
                 </div>
@@ -619,7 +844,10 @@
 
             <a href="liburan-ke-innsbruck.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        
+                    </div>
                     <h3>Innsbruck</h3>
                     <p>Austria</p>
                 </div>
@@ -627,7 +855,10 @@
 
             <a href="liburan-ke-thun.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        <span class="trending-badge">Trending 🔥</span>
+                    </div>
                     <h3>Thun</h3>
                     <p>Switzerland</p>
                 </div>
@@ -635,7 +866,10 @@
 
             <a href="liburan-ke-grindelwald.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        
+                    </div>
                     <h3>Grindelwald</h3>
                     <p>Switzerland</p>
                 </div>
@@ -643,7 +877,10 @@
 
             <a href="liburan-ke-interlaken.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        <span class="trending-badge">Trending 🔥</span>
+                    </div>
                     <h3>Interlaken</h3>
                     <p>Switzerland</p>
                 </div>
@@ -651,7 +888,10 @@
 
             <a href="liburan-ke-chamonix.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        
+                    </div>
                     <h3>Chamonix</h3>
                     <p>France</p>
                 </div>
@@ -659,7 +899,10 @@
 
             <a href="liburan-ke-taormina.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        
+                    </div>
                     <h3>Taormina</h3>
                     <p>Italy</p>
                 </div>
@@ -667,7 +910,10 @@
 
             <a href="liburan-ke-volterra.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        
+                    </div>
                     <h3>Volterra</h3>
                     <p>Italy</p>
                 </div>
@@ -675,7 +921,10 @@
 
             <a href="liburan-ke-lucca.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        
+                    </div>
                     <h3>Lucca</h3>
                     <p>Italy</p>
                 </div>
@@ -683,7 +932,10 @@
 
             <a href="liburan-ke-cadiz.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        
+                    </div>
                     <h3>Cadiz</h3>
                     <p>Spain</p>
                 </div>
@@ -691,7 +943,10 @@
 
             <a href="liburan-ke-cuenca.html" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: #0071C2;">Europe</span>
+                        
+                    </div>
                     <h3>Cuenca</h3>
                     <p>Spain</p>
                 </div>

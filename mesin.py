@@ -31,11 +31,15 @@ updated_str = current_time.strftime("Updated %B %Y")
 
 for item in data_destinasi:
     nama_file = f"liburan-ke-{item['city'].lower().replace(' ', '-')}.html"
-    region_color = "#3498db" if item['region'].lower() == 'europe' else "#2ecc71"
+    region_color = "#0071C2" if item['region'].lower() == 'europe' else "#008009"
+    trending_badge = '<span class="trending-badge">Trending 🔥</span>' if (len(item['city']) + len(item['country'])) % 3 == 0 else ''
     link_halaman += f'''
             <a href="{nama_file}" class="card-link">
                 <div class="card">
-                    <span class="region-badge" style="background-color: {region_color};">{item['region']}</span>
+                    <div class="badges-row">
+                        <span class="region-badge" style="background-color: {region_color};">{item['region']}</span>
+                        {trending_badge}
+                    </div>
                     <h3>{item["city"]}</h3>
                     <p>{item["country"]}</p>
                 </div>
@@ -78,30 +82,28 @@ for item in data_destinasi:
     </script>
     
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-        body {{ font-family: 'Inter', sans-serif; background-color: #f8fafc; margin: 0; padding: 40px 20px; color: #334155; line-height: 1.7; }}
-        .container {{ max-width: 800px; background: #ffffff; padding: 40px 50px; border-radius: 16px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); margin: 0 auto; border: 1px solid #f1f5f9; }}
-        h1 {{ color: #0f172a; font-size: 2.25rem; font-weight: 700; margin-bottom: 15px; line-height: 1.2; }}
-        h2 {{ color: #1e293b; font-size: 1.5rem; margin-top: 40px; margin-bottom: 20px; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; }}
-        .badge {{ background: linear-gradient(135deg, #f59e0b, #d97706); color: white; padding: 6px 14px; border-radius: 9999px; font-weight: 600; font-size: 0.85rem; display: inline-block; margin-bottom: 25px; box-shadow: 0 2px 4px rgba(245, 158, 11, 0.3); }}
-        .highlight {{ font-weight: 600; color: #ea580c; }}
+        body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #FFFFFF; margin: 0; padding: 15px; color: #222222; line-height: 1.6; }}
+        .container {{ max-width: 800px; background: #FFFFFF; padding: 20px; margin: 0 auto; border: 1px solid #DDDDDD; }}
+        h1 {{ color: #000000; font-size: 26px; font-weight: 900; margin-bottom: 10px; line-height: 1.2; }}
+        h2 {{ color: #000000; font-size: 20px; font-weight: 800; margin-top: 35px; margin-bottom: 15px; border-bottom: 3px solid #0071C2; padding-bottom: 5px; }}
+        .badge {{ background-color: #008009; color: #FFFFFF; padding: 8px 16px; font-weight: 800; font-size: 14px; display: inline-block; margin-bottom: 20px; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,128,9,0.4); text-transform: uppercase; }}
+        .highlight {{ font-weight: 800; color: #CC0000; }}
         
-        .fomo-alert {{ background: linear-gradient(to right, #fffbeb, #fef3c7); color: #92400e; padding: 16px 20px; border-left: 4px solid #f59e0b; margin: 30px 0; font-weight: 500; font-size: 0.95rem; border-radius: 0 8px 8px 0; display: flex; align-items: center; gap: 10px; }}
+        .fomo-alert {{ background-color: #FFFDE7; color: #B71C1C; padding: 15px; border: 2px solid #FBC02D; margin: 25px 0; font-weight: 800; font-size: 16px; border-radius: 4px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }}
         
-        .hotel-tier {{ border: 1px solid #e2e8f0; border-radius: 12px; margin-bottom: 24px; padding: 25px; background: #ffffff; transition: transform 0.2s, box-shadow 0.2s; position: relative; overflow: hidden; }}
-        .hotel-tier:hover {{ transform: translateY(-3px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); border-color: #cbd5e1; }}
-        .hotel-tier h3 {{ margin-top: 0; color: #334155; font-size: 1.15rem; margin-bottom: 15px; font-weight: 600; }}
-        .hotel-name {{ font-size: 1.2rem; font-weight: 700; color: #2563eb; margin-bottom: 15px; display: block; }}
+        .hotel-tier {{ border: 2px solid #E5E5E5; margin-bottom: 20px; padding: 20px; background: #FAFAFA; border-radius: 6px; }}
+        .hotel-tier h3 {{ margin-top: 0; color: #333333; font-size: 16px; margin-bottom: 10px; font-weight: 800; text-transform: uppercase; }}
+        .hotel-name {{ font-size: 20px; font-weight: 900; color: #0071C2; margin-bottom: 15px; display: block; line-height: 1.2; }}
         
-        .btn-box {{ padding: 14px; text-align: center; border-radius: 8px; margin: 20px 0 8px 0; transition: opacity 0.2s; }}
-        .btn-box:hover {{ opacity: 0.9; }}
-        .btn-box a {{ color: white; text-decoration: none; font-weight: 600; font-size: 1.05rem; display: block; }}
-        .micro-copy {{ font-size: 0.75rem; color: #64748b; text-align: center; margin-top: 0; font-weight: 500; }}
+        .btn-box {{ margin: 15px 0; }}
+        .btn-box a {{ display: block; color: #FFFFFF; text-decoration: none; font-weight: 900; font-size: 18px; padding: 18px 10px; text-align: center; border-radius: 8px; box-shadow: 0 6px 0px rgba(0,0,0,0.2); transition: transform 0.1s, box-shadow 0.1s; text-transform: uppercase; }}
+        .btn-box a:active {{ transform: translateY(4px); box-shadow: 0 2px 0px rgba(0,0,0,0.2); }}
         
-        .tour-section {{ margin-top: 40px; padding-top: 30px; border-top: 1px solid #e2e8f0; }}
-        hr {{ border: 0; border-top: 1px solid #e2e8f0; margin: 40px 0; }}
-        .back-btn {{ color: #3b82f6; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 5px; transition: color 0.2s; }}
-        .back-btn:hover {{ color: #2563eb; }}
+        .micro-copy {{ font-size: 12px; color: #555555; text-align: center; margin-top: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 5px; }}
+        
+        .tour-section {{ margin-top: 40px; padding-top: 20px; border-top: 2px solid #E5E5E5; }}
+        hr {{ border: 0; border-top: 2px solid #E5E5E5; margin: 30px 0; }}
+        .back-btn {{ color: #0071C2; text-decoration: underline; font-weight: 800; font-size: 16px; }}
     </style>
 </head>
 <body>
@@ -123,8 +125,8 @@ for item in data_destinasi:
         <div class="hotel-tier">
             <h3>⭐ Premium Luxury (5-Star Experience)</h3>
             <span class="hotel-name">{item.get('hotel_premium', 'Luxury Hotel')}</span>
-            <div class="btn-box" style="background: {hotel_btn_color};">
-                <a href="{LINK_AFFILIATE_HOTEL}" target="_blank" rel="nofollow">Check Availability on {hotel_brand} ↗</a>
+            <div class="btn-box">
+                <a href="{LINK_AFFILIATE_HOTEL}" target="_blank" rel="nofollow" style="background-color: {hotel_btn_color};">Check Availability on {hotel_brand} ↗</a>
             </div>
             <p class="micro-copy">🔒 Best Price Guarantee & Free Cancellation on Most Rooms via {hotel_brand}</p>
         </div>
@@ -132,8 +134,8 @@ for item in data_destinasi:
         <div class="hotel-tier">
             <h3>👍 Best Value (Mid-Range & Comfort)</h3>
             <span class="hotel-name">{item.get('hotel_midrange', 'Mid-Range Hotel')}</span>
-            <div class="btn-box" style="background: {hotel_btn_color};">
-                <a href="{LINK_AFFILIATE_HOTEL}" target="_blank" rel="nofollow">Check Availability on {hotel_brand} ↗</a>
+            <div class="btn-box">
+                <a href="{LINK_AFFILIATE_HOTEL}" target="_blank" rel="nofollow" style="background-color: {hotel_btn_color};">Check Availability on {hotel_brand} ↗</a>
             </div>
             <p class="micro-copy">🔒 Best Price Guarantee & Free Cancellation on Most Rooms via {hotel_brand}</p>
         </div>
@@ -141,8 +143,8 @@ for item in data_destinasi:
         <div class="hotel-tier">
             <h3>🎒 Budget Friendly (Smart Budget Options)</h3>
             <span class="hotel-name">{item.get('hotel_budget', 'Budget Hostel')}</span>
-            <div class="btn-box" style="background: {hotel_btn_color};">
-                <a href="{LINK_AFFILIATE_HOTEL}" target="_blank" rel="nofollow">Check Availability on {hotel_brand} ↗</a>
+            <div class="btn-box">
+                <a href="{LINK_AFFILIATE_HOTEL}" target="_blank" rel="nofollow" style="background-color: {hotel_btn_color};">Check Availability on {hotel_brand} ↗</a>
             </div>
             <p class="micro-copy">🔒 Best Price Guarantee & Free Cancellation on Most Rooms via {hotel_brand}</p>
         </div>
@@ -151,8 +153,8 @@ for item in data_destinasi:
             <h2>Estimated Budget & Expenses</h2>
             <p>To fully enjoy your trip here, we highly recommend preparing a budget around <span class="highlight">$500 - $1,500</span>.</p>
             
-            <div class="btn-box" style="background: {tour_btn_color};">
-                <a href="{LINK_AFFILIATE_TOUR}" target="_blank" rel="nofollow">Check Best Activities & Tours HERE ↗</a>
+            <div class="btn-box">
+                <a href="{LINK_AFFILIATE_TOUR}" target="_blank" rel="nofollow" style="background-color: {tour_btn_color};">Check Best Activities & Tours HERE ↗</a>
             </div>
         </div>
 
@@ -175,18 +177,21 @@ beranda_html = f"""<!DOCTYPE html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Global Travel Guide Portal</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
-        body {{ font-family: 'Inter', sans-serif; background-color: #f8fafc; margin: 0; padding: 40px 20px; color: #1e293b; }}
-        .container {{ max-width: 1200px; margin: 0 auto; padding: 20px; }}
-        h1 {{ text-align: center; font-size: 2.75rem; color: #0f172a; margin-bottom: 10px; font-weight: 700; }}
-        .subtitle {{ text-align: center; color: #64748b; margin-bottom: 40px; font-size: 1.1rem; }}
-        .grid-container {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }}
-        .card-link {{ text-decoration: none; color: inherit; }}
-        .card {{ background: #ffffff; border-radius: 12px; padding: 24px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03); transition: transform 0.3s ease, box-shadow 0.3s ease; border: 1px solid #e2e8f0; position: relative; }}
-        .card:hover {{ transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }}
-        .card h3 {{ margin: 10px 0 5px 0; font-size: 1.25rem; color: #0f172a; font-weight: 700; }}
-        .card p {{ margin: 0; color: #64748b; font-size: 0.95rem; }}
-        .region-badge {{ display: inline-block; padding: 4px 10px; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; color: white; margin-bottom: 8px; }}
+        body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #FFFFFF; margin: 0; padding: 20px; color: #111111; }}
+        .container {{ max-width: 1200px; margin: 0 auto; padding: 10px; }}
+        h1 {{ text-align: center; font-size: 28px; font-weight: 900; color: #000000; margin-bottom: 5px; }}
+        .subtitle {{ text-align: center; color: #444444; font-size: 16px; margin-bottom: 30px; font-weight: 600; }}
+        .grid-container {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; }}
+        .card-link {{ text-decoration: none; color: inherit; display: block; }}
+        .card {{ background: #FFFFFF; border: 2px solid #E2E2E2; border-radius: 8px; padding: 15px; position: relative; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: border-color 0.2s; }}
+        .card:hover {{ border-color: #0071C2; }}
+        .card h3 {{ margin: 5px 0; font-size: 18px; font-weight: 800; color: #0071C2; }}
+        .card p {{ margin: 0; color: #333333; font-size: 14px; font-weight: 600; }}
+        .badges-row {{ display: flex; gap: 8px; margin-bottom: 8px; }}
+        .region-badge {{ padding: 3px 8px; border-radius: 4px; font-size: 12px; font-weight: 700; color: #FFFFFF; text-transform: uppercase; }}
+        .trending-badge {{ background-color: #CC0000; color: #FFFFFF; padding: 3px 8px; border-radius: 4px; font-size: 12px; font-weight: 700; text-transform: uppercase; animation: pulse 2s infinite; }}
+        @keyframes pulse {{ 0% {{ transform: scale(1); }} 50% {{ transform: scale(1.05); }} 100% {{ transform: scale(1); }} }}
+        @media (max-width: 600px) {{ .grid-container {{ grid-template-columns: 1fr; }} }}
     </style>
 </head>
 <body>
