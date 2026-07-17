@@ -5,107 +5,699 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Global Travel Guide Portal</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; margin: 40px; background-color: #f4f4f9; }
-        .container { max-width: 800px; background: white; padding: 40px; border-radius: 12px; margin: 0 auto; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        h1 { color: #2c3e50; text-align: center; margin-bottom: 30px; }
-        ul { list-style-type: none; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        li { padding: 15px; background: #fafbfc; border: 1px solid #e1e8ed; border-radius: 8px; border-left: 5px solid #2ecc71; transition: transform 0.2s; }
-        li:hover { transform: translateY(-3px); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        a { color: #2c3e50; text-decoration: none; font-size: 16px; font-weight: 600; display: block; }
-        @media (max-width: 600px) { ul { grid-template-columns: 1fr; } }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; margin: 0; padding: 40px 20px; color: #1e293b; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        h1 { text-align: center; font-size: 2.75rem; color: #0f172a; margin-bottom: 10px; font-weight: 700; }
+        .subtitle { text-align: center; color: #64748b; margin-bottom: 40px; font-size: 1.1rem; }
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
+        .card-link { text-decoration: none; color: inherit; }
+        .card { background: #ffffff; border-radius: 12px; padding: 24px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03); transition: transform 0.3s ease, box-shadow 0.3s ease; border: 1px solid #e2e8f0; position: relative; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
+        .card h3 { margin: 10px 0 5px 0; font-size: 1.25rem; color: #0f172a; font-weight: 700; }
+        .card p { margin: 0; color: #64748b; font-size: 0.95rem; }
+        .region-badge { display: inline-block; padding: 4px 10px; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; color: white; margin-bottom: 8px; }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Global Travel Guide Portal</h1>
-        <p style="text-align: center; color: #7f8c8d; margin-bottom: 30px;">Discover Local Expert Verified travel guides to major cities worldwide.</p>
-        <ul>
-            <li><a href="liburan-ke-bali.html">Budget Travel Guide to Bali</a></li>
-<li><a href="liburan-ke-tokyo.html">Budget Travel Guide to Tokyo</a></li>
-<li><a href="liburan-ke-paris.html">Budget Travel Guide to Paris</a></li>
-<li><a href="liburan-ke-new-york.html">Budget Travel Guide to New York</a></li>
-<li><a href="liburan-ke-seoul.html">Budget Travel Guide to Seoul</a></li>
-<li><a href="liburan-ke-london.html">Budget Travel Guide to London</a></li>
-<li><a href="liburan-ke-bangkok.html">Budget Travel Guide to Bangkok</a></li>
-<li><a href="liburan-ke-sydney.html">Budget Travel Guide to Sydney</a></li>
-<li><a href="liburan-ke-dubai.html">Budget Travel Guide to Dubai</a></li>
-<li><a href="liburan-ke-singapore.html">Budget Travel Guide to Singapore</a></li>
-<li><a href="liburan-ke-kuala-lumpur.html">Budget Travel Guide to Kuala Lumpur</a></li>
-<li><a href="liburan-ke-rome.html">Budget Travel Guide to Rome</a></li>
-<li><a href="liburan-ke-barcelona.html">Budget Travel Guide to Barcelona</a></li>
-<li><a href="liburan-ke-amsterdam.html">Budget Travel Guide to Amsterdam</a></li>
-<li><a href="liburan-ke-berlin.html">Budget Travel Guide to Berlin</a></li>
-<li><a href="liburan-ke-hong-kong.html">Budget Travel Guide to Hong Kong</a></li>
-<li><a href="liburan-ke-istanbul.html">Budget Travel Guide to Istanbul</a></li>
-<li><a href="liburan-ke-cairo.html">Budget Travel Guide to Cairo</a></li>
-<li><a href="liburan-ke-toronto.html">Budget Travel Guide to Toronto</a></li>
-<li><a href="liburan-ke-maldives.html">Budget Travel Guide to Maldives</a></li>
-<li><a href="liburan-ke-kyoto.html">Budget Travel Guide to Kyoto</a></li>
-<li><a href="liburan-ke-phuket.html">Budget Travel Guide to Phuket</a></li>
-<li><a href="liburan-ke-hanoi.html">Budget Travel Guide to Hanoi</a></li>
-<li><a href="liburan-ke-manila.html">Budget Travel Guide to Manila</a></li>
-<li><a href="liburan-ke-taipei.html">Budget Travel Guide to Taipei</a></li>
-<li><a href="liburan-ke-zurich.html">Budget Travel Guide to Zurich</a></li>
-<li><a href="liburan-ke-milan.html">Budget Travel Guide to Milan</a></li>
-<li><a href="liburan-ke-los-angeles.html">Budget Travel Guide to Los Angeles</a></li>
-<li><a href="liburan-ke-cape-town.html">Budget Travel Guide to Cape Town</a></li>
-<li><a href="liburan-ke-rio-de-janeiro.html">Budget Travel Guide to Rio de Janeiro</a></li>
-<li><a href="liburan-ke-shanghai.html">Budget Travel Guide to Shanghai</a></li>
-<li><a href="liburan-ke-madrid.html">Budget Travel Guide to Madrid</a></li>
-<li><a href="liburan-ke-vienna.html">Budget Travel Guide to Vienna</a></li>
-<li><a href="liburan-ke-prague.html">Budget Travel Guide to Prague</a></li>
-<li><a href="liburan-ke-menton.html">Budget Travel Guide to Menton</a></li>
-<li><a href="liburan-ke-colmar.html">Budget Travel Guide to Colmar</a></li>
-<li><a href="liburan-ke-matera.html">Budget Travel Guide to Matera</a></li>
-<li><a href="liburan-ke-alberobello.html">Budget Travel Guide to Alberobello</a></li>
-<li><a href="liburan-ke-zell-am-see.html">Budget Travel Guide to Zell am See</a></li>
-<li><a href="liburan-ke-bled.html">Budget Travel Guide to Bled</a></li>
-<li><a href="liburan-ke-sintra.html">Budget Travel Guide to Sintra</a></li>
-<li><a href="liburan-ke-ronda.html">Budget Travel Guide to Ronda</a></li>
-<li><a href="liburan-ke-mostar.html">Budget Travel Guide to Mostar</a></li>
-<li><a href="liburan-ke-kotor.html">Budget Travel Guide to Kotor</a></li>
-<li><a href="liburan-ke-piran.html">Budget Travel Guide to Piran</a></li>
-<li><a href="liburan-ke-hvar.html">Budget Travel Guide to Hvar</a></li>
-<li><a href="liburan-ke-rovinj.html">Budget Travel Guide to Rovinj</a></li>
-<li><a href="liburan-ke-gdansk.html">Budget Travel Guide to Gdansk</a></li>
-<li><a href="liburan-ke-wroclaw.html">Budget Travel Guide to Wroclaw</a></li>
-<li><a href="liburan-ke-brasov.html">Budget Travel Guide to Brasov</a></li>
-<li><a href="liburan-ke-sibiu.html">Budget Travel Guide to Sibiu</a></li>
-<li><a href="liburan-ke-cesky-krumlov.html">Budget Travel Guide to Cesky Krumlov</a></li>
-<li><a href="liburan-ke-karlovy-vary.html">Budget Travel Guide to Karlovy Vary</a></li>
-<li><a href="liburan-ke-mechelen.html">Budget Travel Guide to Mechelen</a></li>
-<li><a href="liburan-ke-ghent.html">Budget Travel Guide to Ghent</a></li>
-<li><a href="liburan-ke-dinant.html">Budget Travel Guide to Dinant</a></li>
-<li><a href="liburan-ke-giethoorn.html">Budget Travel Guide to Giethoorn</a></li>
-<li><a href="liburan-ke-maastricht.html">Budget Travel Guide to Maastricht</a></li>
-<li><a href="liburan-ke-bergen.html">Budget Travel Guide to Bergen</a></li>
-<li><a href="liburan-ke-reine.html">Budget Travel Guide to Reine</a></li>
-<li><a href="liburan-ke-rovaniemi.html">Budget Travel Guide to Rovaniemi</a></li>
-<li><a href="liburan-ke-porvoo.html">Budget Travel Guide to Porvoo</a></li>
-<li><a href="liburan-ke-tallinn.html">Budget Travel Guide to Tallinn</a></li>
-<li><a href="liburan-ke-riga.html">Budget Travel Guide to Riga</a></li>
-<li><a href="liburan-ke-vilnius.html">Budget Travel Guide to Vilnius</a></li>
-<li><a href="liburan-ke-trakai.html">Budget Travel Guide to Trakai</a></li>
-<li><a href="liburan-ke-ohrid.html">Budget Travel Guide to Ohrid</a></li>
-<li><a href="liburan-ke-plovdiv.html">Budget Travel Guide to Plovdiv</a></li>
-<li><a href="liburan-ke-veliko-tarnovo.html">Budget Travel Guide to Veliko Tarnovo</a></li>
-<li><a href="liburan-ke-novi-sad.html">Budget Travel Guide to Novi Sad</a></li>
-<li><a href="liburan-ke-subotica.html">Budget Travel Guide to Subotica</a></li>
-<li><a href="liburan-ke-eger.html">Budget Travel Guide to Eger</a></li>
-<li><a href="liburan-ke-szeged.html">Budget Travel Guide to Szeged</a></li>
-<li><a href="liburan-ke-graz.html">Budget Travel Guide to Graz</a></li>
-<li><a href="liburan-ke-innsbruck.html">Budget Travel Guide to Innsbruck</a></li>
-<li><a href="liburan-ke-thun.html">Budget Travel Guide to Thun</a></li>
-<li><a href="liburan-ke-grindelwald.html">Budget Travel Guide to Grindelwald</a></li>
-<li><a href="liburan-ke-interlaken.html">Budget Travel Guide to Interlaken</a></li>
-<li><a href="liburan-ke-chamonix.html">Budget Travel Guide to Chamonix</a></li>
-<li><a href="liburan-ke-taormina.html">Budget Travel Guide to Taormina</a></li>
-<li><a href="liburan-ke-volterra.html">Budget Travel Guide to Volterra</a></li>
-<li><a href="liburan-ke-lucca.html">Budget Travel Guide to Lucca</a></li>
-<li><a href="liburan-ke-cadiz.html">Budget Travel Guide to Cadiz</a></li>
-<li><a href="liburan-ke-cuenca.html">Budget Travel Guide to Cuenca</a></li>
+        <p class="subtitle">Discover Local Expert Verified travel guides to major cities worldwide.</p>
+        <div class="grid-container">
+            
+            <a href="liburan-ke-bali.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #2ecc71;">Asia</span>
+                    <h3>Bali</h3>
+                    <p>Indonesia</p>
+                </div>
+            </a>
 
-        </ul>
+            <a href="liburan-ke-tokyo.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #2ecc71;">Asia</span>
+                    <h3>Tokyo</h3>
+                    <p>Japan</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-paris.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Paris</h3>
+                    <p>France</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-new-york.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>New York</h3>
+                    <p>United States</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-seoul.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #2ecc71;">Asia</span>
+                    <h3>Seoul</h3>
+                    <p>South Korea</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-london.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>London</h3>
+                    <p>United Kingdom</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-bangkok.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #2ecc71;">Asia</span>
+                    <h3>Bangkok</h3>
+                    <p>Thailand</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-sydney.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #2ecc71;">Asia</span>
+                    <h3>Sydney</h3>
+                    <p>Australia</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-dubai.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #2ecc71;">Asia</span>
+                    <h3>Dubai</h3>
+                    <p>UAE</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-singapore.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #2ecc71;">Asia</span>
+                    <h3>Singapore</h3>
+                    <p>Singapore</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-kuala-lumpur.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #2ecc71;">Asia</span>
+                    <h3>Kuala Lumpur</h3>
+                    <p>Malaysia</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-rome.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Rome</h3>
+                    <p>Italy</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-barcelona.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Barcelona</h3>
+                    <p>Spain</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-amsterdam.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Amsterdam</h3>
+                    <p>Netherlands</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-berlin.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Berlin</h3>
+                    <p>Germany</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-hong-kong.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #2ecc71;">Asia</span>
+                    <h3>Hong Kong</h3>
+                    <p>China</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-istanbul.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Istanbul</h3>
+                    <p>Turkey</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-cairo.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Cairo</h3>
+                    <p>Egypt</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-toronto.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Toronto</h3>
+                    <p>Canada</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-maldives.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #2ecc71;">Asia</span>
+                    <h3>Maldives</h3>
+                    <p>Maldives</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-kyoto.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #2ecc71;">Asia</span>
+                    <h3>Kyoto</h3>
+                    <p>Japan</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-phuket.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #2ecc71;">Asia</span>
+                    <h3>Phuket</h3>
+                    <p>Thailand</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-hanoi.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #2ecc71;">Asia</span>
+                    <h3>Hanoi</h3>
+                    <p>Vietnam</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-manila.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #2ecc71;">Asia</span>
+                    <h3>Manila</h3>
+                    <p>Philippines</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-taipei.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #2ecc71;">Asia</span>
+                    <h3>Taipei</h3>
+                    <p>Taiwan</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-zurich.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Zurich</h3>
+                    <p>Switzerland</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-milan.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Milan</h3>
+                    <p>Italy</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-los-angeles.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Los Angeles</h3>
+                    <p>United States</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-cape-town.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Cape Town</h3>
+                    <p>South Africa</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-rio-de-janeiro.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Rio de Janeiro</h3>
+                    <p>Brazil</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-shanghai.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #2ecc71;">Asia</span>
+                    <h3>Shanghai</h3>
+                    <p>China</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-madrid.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Madrid</h3>
+                    <p>Spain</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-vienna.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Vienna</h3>
+                    <p>Austria</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-prague.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Prague</h3>
+                    <p>Czech Republic</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-menton.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Menton</h3>
+                    <p>France</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-colmar.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Colmar</h3>
+                    <p>France</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-matera.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Matera</h3>
+                    <p>Italy</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-alberobello.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Alberobello</h3>
+                    <p>Italy</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-zell-am-see.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Zell am See</h3>
+                    <p>Austria</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-bled.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Bled</h3>
+                    <p>Slovenia</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-sintra.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Sintra</h3>
+                    <p>Portugal</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-ronda.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Ronda</h3>
+                    <p>Spain</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-mostar.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Mostar</h3>
+                    <p>Bosnia & Herzegovina</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-kotor.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Kotor</h3>
+                    <p>Montenegro</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-piran.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Piran</h3>
+                    <p>Slovenia</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-hvar.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Hvar</h3>
+                    <p>Croatia</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-rovinj.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Rovinj</h3>
+                    <p>Croatia</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-gdansk.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Gdansk</h3>
+                    <p>Poland</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-wroclaw.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Wroclaw</h3>
+                    <p>Poland</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-brasov.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Brasov</h3>
+                    <p>Romania</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-sibiu.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Sibiu</h3>
+                    <p>Romania</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-cesky-krumlov.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Cesky Krumlov</h3>
+                    <p>Czech Republic</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-karlovy-vary.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Karlovy Vary</h3>
+                    <p>Czech Republic</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-mechelen.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Mechelen</h3>
+                    <p>Belgium</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-ghent.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Ghent</h3>
+                    <p>Belgium</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-dinant.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Dinant</h3>
+                    <p>Belgium</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-giethoorn.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Giethoorn</h3>
+                    <p>Netherlands</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-maastricht.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Maastricht</h3>
+                    <p>Netherlands</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-bergen.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Bergen</h3>
+                    <p>Norway</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-reine.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Reine</h3>
+                    <p>Norway</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-rovaniemi.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Rovaniemi</h3>
+                    <p>Finland</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-porvoo.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Porvoo</h3>
+                    <p>Finland</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-tallinn.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Tallinn</h3>
+                    <p>Estonia</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-riga.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Riga</h3>
+                    <p>Latvia</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-vilnius.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Vilnius</h3>
+                    <p>Lithuania</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-trakai.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Trakai</h3>
+                    <p>Lithuania</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-ohrid.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Ohrid</h3>
+                    <p>North Macedonia</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-plovdiv.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Plovdiv</h3>
+                    <p>Bulgaria</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-veliko-tarnovo.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Veliko Tarnovo</h3>
+                    <p>Bulgaria</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-novi-sad.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Novi Sad</h3>
+                    <p>Serbia</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-subotica.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Subotica</h3>
+                    <p>Serbia</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-eger.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Eger</h3>
+                    <p>Hungary</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-szeged.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Szeged</h3>
+                    <p>Hungary</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-graz.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Graz</h3>
+                    <p>Austria</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-innsbruck.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Innsbruck</h3>
+                    <p>Austria</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-thun.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Thun</h3>
+                    <p>Switzerland</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-grindelwald.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Grindelwald</h3>
+                    <p>Switzerland</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-interlaken.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Interlaken</h3>
+                    <p>Switzerland</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-chamonix.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Chamonix</h3>
+                    <p>France</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-taormina.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Taormina</h3>
+                    <p>Italy</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-volterra.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Volterra</h3>
+                    <p>Italy</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-lucca.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Lucca</h3>
+                    <p>Italy</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-cadiz.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Cadiz</h3>
+                    <p>Spain</p>
+                </div>
+            </a>
+
+            <a href="liburan-ke-cuenca.html" class="card-link">
+                <div class="card">
+                    <span class="region-badge" style="background-color: #3498db;">Europe</span>
+                    <h3>Cuenca</h3>
+                    <p>Spain</p>
+                </div>
+            </a>
+
+        </div>
     </div>
 </body>
 </html>
