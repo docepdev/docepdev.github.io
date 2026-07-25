@@ -1,6 +1,41 @@
 import os
 import csv
 import datetime
+import subprocess
+import re
+
+_unsplash_cache = {}
+def get_real_image(city_name):
+    print(f"Fetching real Unsplash image for: {city_name} ...")
+    keyword = f"{city_name} landmark travel"
+    keyword_query = keyword.replace(" ", "-")
+    
+    if city_name in _unsplash_cache:
+        return _unsplash_cache[city_name]
+        
+    cmd = ['curl', '-s', f'https://unsplash.com/s/photos/{keyword_query}']
+    try:
+        result = subprocess.run(cmd, capture_output=True, text=True, timeout=10)
+        urls = re.findall(r'https://images.unsplash.com/photo-[a-zA-Z0-9-]+', result.stdout)
+        unique_urls = list(dict.fromkeys(urls))
+        
+        if len(unique_urls) >= 2:
+            card_img = f"{unique_urls[0]}?w=600&h=800&fit=crop"
+            hero_img = f"{unique_urls[1]}?w=1600&h=900&fit=crop"
+        elif len(unique_urls) == 1:
+            card_img = f"{unique_urls[0]}?w=600&h=800&fit=crop"
+            hero_img = f"{unique_urls[0]}?w=1600&h=900&fit=crop"
+        else:
+            fallback_query = city_name.replace(" ", "%20")
+            card_img = f"https://picsum.photos/seed/{fallback_query}/600/800"
+            hero_img = f"https://picsum.photos/seed/{fallback_query}2/1600/900"
+            
+        _unsplash_cache[city_name] = (card_img, hero_img)
+        return card_img, hero_img
+    except Exception as e:
+        print(f"Error fetching {city_name}: {e}")
+        fallback_query = city_name.replace(" ", "%20")
+        return f"https://picsum.photos/seed/{fallback_query}/600/800", f"https://picsum.photos/seed/{fallback_query}2/1600/900"
 
 # ==========================================
 # 1. SAKELAR DUIT UTAMA
@@ -31,10 +66,11 @@ updated_str = current_time.strftime("Updated %B %Y")
 
 for item in data_destinasi:
     nama_file = f"liburan-ke-{item['city'].lower().replace(' ', '-')}.html"
-    kota_url = item['city'].replace(' ', '%20')
+    card_img_url, hero_img_url = get_real_image(item['city'])
+    
     link_halaman += f'''
             <a href="{nama_file}" class="card-link">
-                <div class="card" style="background-image: url('https://picsum.photos/seed/{kota_url}/600/800');">
+                <div class="card" style="background-image: url('{card_img_url}');">
                     <div class="card-gradient">
                         <span class="region-badge">{item['region']}</span>
                         <h3>{item["city"]}</h3>
@@ -115,7 +151,7 @@ for item in data_destinasi:
     </style>
 </head>
 <body>
-    <div class="hero-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('https://picsum.photos/seed/{kota_url}banner/1600/900');">
+    <div class="hero-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('{hero_img_url}');">
         <div class="hero-content">
             <h1>Budget Travel Guide to {item['city']}</h1>
             <p class="hero-subtitle">Updated {updated_str}</p>
