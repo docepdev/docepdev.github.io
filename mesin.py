@@ -4,38 +4,27 @@ import datetime
 import subprocess
 import re
 
-_unsplash_cache = {}
+_unsplash_mapping = {
+    'Bali': 'https://images.unsplash.com/photo-1537996194471-e657df975ab4',
+    'Paris': 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34',
+    'Tokyo': 'https://images.unsplash.com/photo-1503899036084-c55cdd92da26',
+    'London': 'https://images.unsplash.com/photo-1513635269975-59693364dfd5',
+    'New York': 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9',
+    'Rome': 'https://images.unsplash.com/photo-1552832230-c0197dd311b5',
+    'Barcelona': 'https://images.unsplash.com/photo-1583422409516-2895a77ef244',
+    'Amsterdam': 'https://images.unsplash.com/photo-1512470876302-972faa2aa9a4',
+    'Seoul': 'https://images.unsplash.com/photo-1517154421773-0529f29ea451',
+    'Bangkok': 'https://images.unsplash.com/photo-1508009603885-247a597a8100',
+    'Sydney': 'https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9',
+    'Dubai': 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c',
+    'Singapore': 'https://images.unsplash.com/photo-1525625293386-3f8f99389edd'
+}
+
 def get_real_image(city_name):
-    print(f"Fetching real Unsplash image for: {city_name} ...")
-    keyword = f"{city_name} landmark travel"
-    keyword_query = keyword.replace(" ", "-")
-    
-    if city_name in _unsplash_cache:
-        return _unsplash_cache[city_name]
-        
-    cmd = ['curl', '-s', f'https://unsplash.com/s/photos/{keyword_query}']
-    try:
-        result = subprocess.run(cmd, capture_output=True, text=True, timeout=10)
-        urls = re.findall(r'https://images.unsplash.com/photo-[a-zA-Z0-9-]+', result.stdout)
-        unique_urls = list(dict.fromkeys(urls))
-        
-        if len(unique_urls) >= 2:
-            card_img = f"{unique_urls[0]}?w=600&h=800&fit=crop"
-            hero_img = f"{unique_urls[1]}?w=1600&h=900&fit=crop"
-        elif len(unique_urls) == 1:
-            card_img = f"{unique_urls[0]}?w=600&h=800&fit=crop"
-            hero_img = f"{unique_urls[0]}?w=1600&h=900&fit=crop"
-        else:
-            fallback_query = city_name.replace(" ", "%20")
-            card_img = f"https://picsum.photos/seed/{fallback_query}/600/800"
-            hero_img = f"https://picsum.photos/seed/{fallback_query}2/1600/900"
-            
-        _unsplash_cache[city_name] = (card_img, hero_img)
-        return card_img, hero_img
-    except Exception as e:
-        print(f"Error fetching {city_name}: {e}")
-        fallback_query = city_name.replace(" ", "%20")
-        return f"https://picsum.photos/seed/{fallback_query}/600/800", f"https://picsum.photos/seed/{fallback_query}2/1600/900"
+    base_url = _unsplash_mapping.get(city_name, 'https://images.unsplash.com/photo-1488646953014-85cb44e25828')
+    card_img = f"{base_url}?w=600&h=800&fit=crop"
+    hero_img = f"{base_url}?w=1600&h=900&fit=crop"
+    return card_img, hero_img
 
 # ==========================================
 # 1. SAKELAR DUIT UTAMA
