@@ -1,4 +1,5 @@
 import csv
+import glob
 import json
 import os
 
@@ -6,7 +7,7 @@ import os
 # 1. DATABASE FOTO KOTA ACCURATE (UNSPLASH HD)
 # ==========================================
 CITY_IMAGES = {
-    # 10 High-ADR Cities (Dollar Tebal)
+    # High-ADR Cities
     "Positano": "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=80",
     "Mykonos": "https://images.unsplash.com/photo-1601581875309-fafbf2d3ed3a?auto=format&fit=crop&w=1200&q=80",
     "Grenada": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80",
@@ -16,8 +17,8 @@ CITY_IMAGES = {
     "Tulum": "https://images.unsplash.com/photo-1518638150340-f706e86654de?auto=format&fit=crop&w=1200&q=80",
     "Koh Samui": "https://images.unsplash.com/photo-1537956965359-7573183d1f57?auto=format&fit=crop&w=1200&q=80",
     "Ubud": "https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=1200&q=80",
-    "Tainan": "https://images.unsplash.com/photo-1508248467877-aed3237d2826?auto=format&fit=crop&w=1200&q=80",
-    # Major Global Destinations
+    "Tainan": "https://images.unsplash.com/photo-1552993873-0dd1110e025f?auto=format&fit=crop&w=1200&q=80",  # FIXED URL TAINAN
+    # Global Cities
     "Bali": "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1200&q=80",
     "Tokyo": "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=1200&q=80",
     "Paris": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=80",
@@ -31,9 +32,9 @@ CITY_IMAGES = {
     "Barcelona": "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=1200&q=80",
 }
 
+# Fallback HD Travel Image jika kota belum ada di dictionary
 DEFAULT_IMAGE = "https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1200&q=80"
 
-# Est. ADR Default untuk High-Converting Pricing Anchor
 ADR_RATES = {
     "Positano": 673,
     "Mykonos": 385,
@@ -57,7 +58,7 @@ def get_adr(city_name):
 
 
 # ==========================================
-# 2. TEMPLATE HTML ARTICLE (CRO 2026 STANDARDS)
+# 2. TEMPLATE HTML ARTICLE
 # ==========================================
 ARTICLE_TEMPLATE = """<!DOCTYPE html>
 <html lang="en">
@@ -70,7 +71,6 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- JSON-LD Schema Markup (Machine-Readable SEO) -->
     <script type="application/ld+json">
     {{
       "@context": "https://schema.org",
@@ -86,7 +86,6 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
         body {{ font-family: 'Plus Jakarta Sans', sans-serif; color: #1e293b; background: #f8fafc; line-height: 1.6; }}
         h1, h2, h3 {{ font-family: 'Playfair Display', serif; color: #0f172a; }}
         
-        /* Above-The-Fold (ATF) Hero Section */
         .hero {{
             position: relative;
             min-height: 75vh;
@@ -104,7 +103,6 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
         .price-anchor {{ font-size: 1.25rem; font-weight: 600; color: #cbd5e1; margin-bottom: 1.5rem; }}
         .price-anchor span {{ color: #38bdf8; font-weight: 700; }}
         
-        /* ATF Quick Widget Search */
         .search-widget {{
             background: #ffffff;
             border-radius: 16px;
@@ -127,17 +125,15 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
             text-align: center;
             display: inline-block;
             transition: all 0.2s ease;
-            min-height: 44px; /* Mobile Touch Target Standard */
+            min-height: 44px;
             border: none;
             cursor: pointer;
         }}
         .btn-cta:hover {{ background: #1d4ed8; transform: translateY(-2px); }}
         
-        /* Main Container */
         .container {{ max-width: 900px; margin: 3rem auto; padding: 0 1.5rem; }}
         .section-title {{ font-size: 2rem; margin-bottom: 1.5rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; }}
         
-        /* Mobile Horizontal Carousel for Hotels */
         .hotel-carousel {{ display: flex; gap: 1.5rem; overflow-x: auto; padding-bottom: 1.5rem; scroll-snap-type: x mandatory; }}
         .hotel-card {{
             flex: 0 0 300px;
@@ -162,7 +158,6 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
 </head>
 <body>
 
-    <!-- Above-The-Fold (ATF) Viewport -->
     <header class="hero">
         <div class="hero-content">
             <div class="badge-bar">
@@ -173,7 +168,6 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
             <h1>Best Places to Stay in {city} Without a Car</h1>
             <p class="price-anchor">Top walkable neighborhoods • Prices from <span>${adr}/night</span></p>
             
-            <!-- Quick Search Widget -->
             <div class="search-widget">
                 <div>
                     <label style="font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase;">Destination</label>
@@ -188,11 +182,9 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
         </div>
     </header>
 
-    <!-- Main Content -->
     <main class="container">
         <h2 class="section-title">Top Walkable Stays in {city}</h2>
         
-        <!-- Mobile Carousel -->
         <div class="hotel-carousel">
             <div class="hotel-card">
                 <div>
@@ -222,7 +214,7 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
 """
 
 # ==========================================
-# 3. TEMPLATE INDEX.HTML (GRID SULTAN)
+# 3. TEMPLATE INDEX.HTML
 # ==========================================
 INDEX_TEMPLATE = """<!DOCTYPE html>
 <html lang="en">
@@ -275,44 +267,102 @@ INDEX_TEMPLATE = """<!DOCTYPE html>
 </html>
 """
 
+
 # ==========================================
-# 4. SKRIP EKSEKUSI PENJETAKAN (GENERATOR)
+# 4. SKRIP OTOMATIS BACA DARI FILE CSV / FILE HTML
 # ==========================================
-ALL_CITIES = [
-    "Positano",
-    "Mykonos",
-    "Grenada",
-    "Costa Smeralda",
-    "Florence",
-    "Rome",
-    "Tulum",
-    "Koh Samui",
-    "Ubud",
-    "Tainan",
-    "Bali",
-    "Tokyo",
-    "Paris",
-    "New York",
-    "Seoul",
-    "Singapore",
-    "Amsterdam",
-    "London",
-    "Kuala Lumpur",
-    "Berlin",
-    "Barcelona",
-]
+def get_all_cities():
+    cities = []
+
+    # 1. Cari file CSV di folder saat ini
+    csv_files = glob.glob("*.csv")
+    if csv_files:
+        print(f"📄 Menemukan file CSV: {csv_files[0]}")
+        try:
+            with open(csv_files[0], mode="r", encoding="utf-8") as f:
+                reader = csv.reader(f)
+                header = next(reader, None)
+                for row in reader:
+                    if row and row[0].strip():
+                        # Ambil nama kota dari kolom pertama
+                        city = row[0].strip().title()
+                        if city not in cities:
+                            cities.append(city)
+        except Exception as e:
+            print(f"⚠️ Gagal membaca CSV: {e}")
+
+    # 2. Jika CSV tidak ditemukan, kumpulkan dari file .html liburan-ke-*.html
+    if not cities:
+        print("🔍 Mengumpulkan kota dari file HTML yang ada...")
+        html_files = glob.glob("liburan-ke-*.html")
+        for hf in html_files:
+            c_name = (
+                hf.replace("liburan-ke-", "")
+                .replace(".html", "")
+                .replace("-", " ")
+                .title()
+            )
+            if c_name not in cities:
+                cities.append(c_name)
+
+    # 3. Selalu sertakan 10 Kota High-ADR Sultan di posisi teratas
+    high_adr = [
+        "Positano",
+        "Mykonos",
+        "Grenada",
+        "Costa Smeralda",
+        "Florence",
+        "Rome",
+        "Tulum",
+        "Koh Samui",
+        "Ubud",
+        "Tainan",
+    ]
+    for ha in reversed(high_adr):
+        if ha in cities:
+            cities.remove(ha)
+        cities.insert(0, ha)
+
+    return cities
 
 
 def generate_site():
-    print("🚀 Memulai proses cetak ulang 84 Halaman pSEO CRO 2026...")
+    all_cities = get_all_cities()
+    print(f"🚀 Memulai pencetakan untuk TOTAL {len(all_cities)} KOTA...")
 
     cards = []
-    for city in ALL_CITIES:
+    for city in all_cities:
         img_url = get_image(city)
         adr = get_adr(city)
-        filename = f"{city.lower().replace(' ', '-')}.html"
 
-        # 1. Cetak Artikel Individual
+        # Nama file konsisten
+        filename = f"liburan-ke-{city.lower().replace(' ', '-')}.html"
+        if city in [
+            "Positano",
+            "Mykonos",
+            "Grenada",
+            "Costa Smeralda",
+            "Florence",
+            "Rome",
+            "Tulum",
+            "Koh Samui",
+            "Ubud",
+            "Tainan",
+            "Bali",
+            "Tokyo",
+            "Paris",
+            "New York",
+            "Seoul",
+            "Singapore",
+            "Amsterdam",
+            "London",
+            "Kuala Lumpur",
+            "Berlin",
+            "Barcelona",
+        ]:
+            filename = f"{city.lower().replace(' ', '-')}.html"
+
+        # 1. Cetak Artikel
         html_content = ARTICLE_TEMPLATE.format(
             city=city,
             image_url=img_url,
@@ -335,12 +385,12 @@ def generate_site():
         """
         )
 
-    # 3. Cetak index.html Utama
+    # 3. Cetak index.html
     index_html = INDEX_TEMPLATE.format(cards_html="\n".join(cards))
     with open("index.html", "w", encoding="utf-8") as f:
         f.write(index_html)
 
-    print("✅ SUKSES! Seluruh halaman HTML & index.html berhasil dicetak!")
+    print(f"✅ SUKSES BANYAK! Seluruh {len(all_cities)} kota berhasil dicetak!")
 
 
 if __name__ == "__main__":
