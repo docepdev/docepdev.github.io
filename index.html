@@ -3,881 +3,235 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global Travel Guide Portal</title>
+    <title>Global Travel Guide Portal | Verified Destination Guides</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #FAFAFA; margin: 0; padding: 0; color: #4A4A4A; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #0f172a; color: #f8fafc; padding: 3rem 1.5rem; }
+        .header { text-align: center; max-width: 800px; margin: 0 auto 3rem auto; }
+        .header h1 { font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 1rem; color: #ffffff; }
+        .header p { color: #94a3b8; font-size: 1.1rem; }
         
-        .header-wrapper { background: #FFFFFF; padding: 60px 20px; text-align: center; border-bottom: 1px solid #F1F5F9; margin-bottom: 60px; }
-        h1 { font-family: 'Playfair Display', serif; font-size: 2.8rem; color: #0F172A; margin: 0 0 15px 0; letter-spacing: 0.5px; }
-        .subtitle { color: #64748B; font-size: 1.1rem; margin: 0; font-weight: 400; max-width: 600px; margin: 0 auto; line-height: 1.6; }
-        
-        .container { max-width: 1400px; margin: 0 auto; padding: 0 40px 80px 40px; }
-        .grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; }
-        
-        .card-link { text-decoration: none; color: inherit; display: block; outline: none; }
-        .card { height: 420px; background-size: cover; background-position: center; border-radius: 16px; position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease; }
-        .card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
-        
-        .card-gradient { position: absolute; bottom: 0; left: 0; right: 0; height: 60%; background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 60%, transparent 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 30px; }
-        
-        .card h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: #FFFFFF; margin: 0 0 5px 0; letter-spacing: 0.5px; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
-        .card p { margin: 0; color: #E2E8F0; font-size: 0.95rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; }
-        
-        .region-badge { display: inline-block; padding: 6px 12px; border-radius: 30px; font-size: 0.7rem; font-weight: 600; color: #FFFFFF; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.4); align-self: flex-start; backdrop-filter: blur(4px); }
-        
-        @media (max-width: 768px) { .container { padding: 0 20px 60px 20px; } .card { height: 350px; } h1 { font-size: 2.2rem; } }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; max-width: 1200px; margin: 0 auto; }
+        .card {
+            position: relative;
+            height: 350px;
+            border-radius: 16px;
+            overflow: hidden;
+            text-decoration: none;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+        .card:hover { transform: translateY(-5px); }
+        .card-bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
+        .card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(15,23,42,0.95) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.5rem;
+        }
+        .card-title { font-family: 'Playfair Display', serif; font-size: 1.75rem; color: #ffffff; font-weight: 700; }
+        .card-sub { font-size: 0.85rem; color: #38bdf8; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
     </style>
 </head>
 <body>
-    <div class="header-wrapper">
+    <div class="header">
         <h1>Global Travel Guide Portal</h1>
-        <p class="subtitle">Discover hand-curated, Local Expert Verified travel guides to the world's most extraordinary destinations.</p>
+        <p>Discover hand-curated, Local Expert Verified travel guides to the world's most extraordinary destinations.</p>
     </div>
-    <div class="container">
-        <div class="grid-container">
-            
-            <a href="liburan-ke-bali.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Asia</span>
-                        <h3>Bali</h3>
-                        <p>Indonesia</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-tokyo.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1513407030348-c983a97b98d8?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Asia</span>
-                        <h3>Tokyo</h3>
-                        <p>Japan</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-paris.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Paris</h3>
-                        <p>France</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-new-york.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1496588152823-86ff7695e68f?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>New York</h3>
-                        <p>United States</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-seoul.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1583833008338-31a6657917ab?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Asia</span>
-                        <h3>Seoul</h3>
-                        <p>South Korea</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-london.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>London</h3>
-                        <p>United Kingdom</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-bangkok.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1563492065599-3520f775eeed?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Asia</span>
-                        <h3>Bangkok</h3>
-                        <p>Thailand</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-sydney.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Asia</span>
-                        <h3>Sydney</h3>
-                        <p>Australia</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-dubai.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Asia</span>
-                        <h3>Dubai</h3>
-                        <p>UAE</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-singapore.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Asia</span>
-                        <h3>Singapore</h3>
-                        <p>Singapore</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-kuala-lumpur.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1508062878650-88b52897f298?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Asia</span>
-                        <h3>Kuala Lumpur</h3>
-                        <p>Malaysia</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-rome.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Rome</h3>
-                        <p>Italy</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-barcelona.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1630219694734-fe47ab76b15e?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Barcelona</h3>
-                        <p>Spain</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-amsterdam.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1584003564911-a7a321c84e1c?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Amsterdam</h3>
-                        <p>Netherlands</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-berlin.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1599946347371-68eb71b16afc?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Berlin</h3>
-                        <p>Germany</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-hong-kong.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1620015092538-e33c665fc181?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Asia</span>
-                        <h3>Hong Kong</h3>
-                        <p>China</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-istanbul.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Istanbul</h3>
-                        <p>Turkey</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-cairo.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1572252009286-268acec5ca0a?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Cairo</h3>
-                        <p>Egypt</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-toronto.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1517935706615-2717063c2225?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Toronto</h3>
-                        <p>Canada</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-maldives.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1512100356356-de1b84283e18?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Asia</span>
-                        <h3>Maldives</h3>
-                        <p>Maldives</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-kyoto.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1582603455714-a46aaf41e5d9?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Asia</span>
-                        <h3>Kyoto</h3>
-                        <p>Japan</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-phuket.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Asia</span>
-                        <h3>Phuket</h3>
-                        <p>Thailand</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-hanoi.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1553851919-596510268b99?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Asia</span>
-                        <h3>Hanoi</h3>
-                        <p>Vietnam</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-manila.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1598258710957-db8614c2881e?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Asia</span>
-                        <h3>Manila</h3>
-                        <p>Philippines</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-taipei.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1565338259873-8df7c4498c4f?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Asia</span>
-                        <h3>Taipei</h3>
-                        <p>Taiwan</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-zurich.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1620563092215-0fbc6b55cfc5?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Zurich</h3>
-                        <p>Switzerland</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-milan.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1610016302534-6f67f1c968d8?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Milan</h3>
-                        <p>Italy</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-los-angeles.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1597982087634-9884f03198ce?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Los Angeles</h3>
-                        <p>United States</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-cape-town.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1580060839134-75a5edca2e99?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Cape Town</h3>
-                        <p>South Africa</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-rio-de-janeiro.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Rio de Janeiro</h3>
-                        <p>Brazil</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-shanghai.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1627484986972-e544190b8abb?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Asia</span>
-                        <h3>Shanghai</h3>
-                        <p>China</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-madrid.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Madrid</h3>
-                        <p>Spain</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-vienna.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1519923041107-e4dc8d9193da?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Vienna</h3>
-                        <p>Austria</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-prague.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1564511287568-54483b52a35e?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Prague</h3>
-                        <p>Czech Republic</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-menton.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1758295644140-06935ecbd12c?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Menton</h3>
-                        <p>France</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-colmar.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1584109504427-f9b960c94cdb?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Colmar</h3>
-                        <p>France</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-matera.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1780929025106-f43004547c4d?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Matera</h3>
-                        <p>Italy</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-alberobello.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1771659147367-ebfaeefed426?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Alberobello</h3>
-                        <p>Italy</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-zell-am-see.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1599229723608-fa98d61367b4?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Zell am See</h3>
-                        <p>Austria</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-bled.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1647202321657-530c84a29a62?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Bled</h3>
-                        <p>Slovenia</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-sintra.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1762883834037-d0076ca334ea?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Sintra</h3>
-                        <p>Portugal</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-ronda.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1535948785772-6cabd35ff7ef?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Ronda</h3>
-                        <p>Spain</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-mostar.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1670787293809-36f88963990f?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Mostar</h3>
-                        <p>Bosnia & Herzegovina</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-kotor.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1771403051740-36baa56a05b4?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Kotor</h3>
-                        <p>Montenegro</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-piran.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1521192586723-1ef0e384dd32?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Piran</h3>
-                        <p>Slovenia</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-hvar.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1761349319558-80cc028aa128?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Hvar</h3>
-                        <p>Croatia</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-rovinj.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1783888023041-47460e3508ec?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Rovinj</h3>
-                        <p>Croatia</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-gdansk.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1623130622557-8fab31968b8f?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Gdansk</h3>
-                        <p>Poland</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-wroclaw.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1722167635061-24ad72315579?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Wroclaw</h3>
-                        <p>Poland</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-brasov.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1783630209404-5cf87ca7c80d?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Brasov</h3>
-                        <p>Romania</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-sibiu.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1725700253318-87e68142bf43?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Sibiu</h3>
-                        <p>Romania</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-cesky-krumlov.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1589312893179-38d2eb60655d?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Cesky Krumlov</h3>
-                        <p>Czech Republic</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-karlovy-vary.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1619164286837-e86ba3f16c08?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Karlovy Vary</h3>
-                        <p>Czech Republic</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-mechelen.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1561458175-ba8d805e7c32?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Mechelen</h3>
-                        <p>Belgium</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-ghent.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1679763484717-ad0c9f1440cb?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Ghent</h3>
-                        <p>Belgium</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-dinant.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Dinant</h3>
-                        <p>Belgium</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-giethoorn.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1603917817377-ee53733f5be8?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Giethoorn</h3>
-                        <p>Netherlands</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-maastricht.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1631107452534-b8f9868a8b20?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Maastricht</h3>
-                        <p>Netherlands</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-bergen.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1544085311-11a028465b03?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Bergen</h3>
-                        <p>Norway</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-reine.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1635031431742-8c78f7076a8c?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Reine</h3>
-                        <p>Norway</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-rovaniemi.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1645020455080-794aded408ca?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Rovaniemi</h3>
-                        <p>Finland</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-porvoo.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1598273705829-7338ab11e350?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Porvoo</h3>
-                        <p>Finland</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-tallinn.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1683041133654-822b303c74c2?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Tallinn</h3>
-                        <p>Estonia</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-riga.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1725731220989-40f2e262ab30?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Riga</h3>
-                        <p>Latvia</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-vilnius.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1549891472-991e6bc75d1e?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Vilnius</h3>
-                        <p>Lithuania</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-trakai.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1765639286105-8f3b61838f73?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Trakai</h3>
-                        <p>Lithuania</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-ohrid.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1780346346070-9572818a144f?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Ohrid</h3>
-                        <p>North Macedonia</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-plovdiv.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1729446952907-2a740280c116?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Plovdiv</h3>
-                        <p>Bulgaria</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-veliko-tarnovo.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1772567747947-c081ba960dfe?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Veliko Tarnovo</h3>
-                        <p>Bulgaria</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-novi-sad.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1564982547455-b9e810ae9223?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Novi Sad</h3>
-                        <p>Serbia</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-subotica.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1774434923581-91ed9d8ee79b?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Subotica</h3>
-                        <p>Serbia</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-eger.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Eger</h3>
-                        <p>Hungary</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-szeged.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1648676788509-4c45f772d46f?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Szeged</h3>
-                        <p>Hungary</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-graz.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1777289679957-a6a4638eee45?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Graz</h3>
-                        <p>Austria</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-innsbruck.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1707133105893-1216d1cc4c53?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Innsbruck</h3>
-                        <p>Austria</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-thun.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1561929369-eb0a6081124f?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Thun</h3>
-                        <p>Switzerland</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-grindelwald.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1654365001260-5f3e4e5e25db?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Grindelwald</h3>
-                        <p>Switzerland</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-interlaken.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1605825856823-cabe105ab0af?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Interlaken</h3>
-                        <p>Switzerland</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-chamonix.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1765628658840-eaf4fcb89634?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Chamonix</h3>
-                        <p>France</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-taormina.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1773158098176-cd383fea7e40?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Taormina</h3>
-                        <p>Italy</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-volterra.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1738709141318-2939b56d6725?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Volterra</h3>
-                        <p>Italy</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-lucca.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1707401100280-b40d51f1846a?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Lucca</h3>
-                        <p>Italy</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-cadiz.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1776698892983-3ae39d6ea1fd?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Cadiz</h3>
-                        <p>Spain</p>
-                    </div>
-                </div>
-            </a>
-
-            <a href="liburan-ke-cuenca.html" class="card-link">
-                <div class="card" style="background-image: url('https://images.unsplash.com/photo-1645327902189-6e4d25ab665c?w=600&h=800&fit=crop');">
-                    <div class="card-gradient">
-                        <span class="region-badge">Europe</span>
-                        <h3>Cuenca</h3>
-                        <p>Spain</p>
-                    </div>
-                </div>
-            </a>
-
-        </div>
+    <div class="grid">
+        
+        <a href="positano.html" class="card">
+            <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-overlay">
+                <span class="card-sub">Verified Guide</span>
+                <h2 class="card-title">Positano</h2>
+            </div>
+        </a>
+        
+
+        <a href="mykonos.html" class="card">
+            <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1601581875309-fafbf2d3ed3a?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-overlay">
+                <span class="card-sub">Verified Guide</span>
+                <h2 class="card-title">Mykonos</h2>
+            </div>
+        </a>
+        
+
+        <a href="grenada.html" class="card">
+            <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-overlay">
+                <span class="card-sub">Verified Guide</span>
+                <h2 class="card-title">Grenada</h2>
+            </div>
+        </a>
+        
+
+        <a href="costa-smeralda.html" class="card">
+            <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-overlay">
+                <span class="card-sub">Verified Guide</span>
+                <h2 class="card-title">Costa Smeralda</h2>
+            </div>
+        </a>
+        
+
+        <a href="florence.html" class="card">
+            <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1543429776-2782fc8e1acd?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-overlay">
+                <span class="card-sub">Verified Guide</span>
+                <h2 class="card-title">Florence</h2>
+            </div>
+        </a>
+        
+
+        <a href="rome.html" class="card">
+            <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-overlay">
+                <span class="card-sub">Verified Guide</span>
+                <h2 class="card-title">Rome</h2>
+            </div>
+        </a>
+        
+
+        <a href="tulum.html" class="card">
+            <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1518638150340-f706e86654de?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-overlay">
+                <span class="card-sub">Verified Guide</span>
+                <h2 class="card-title">Tulum</h2>
+            </div>
+        </a>
+        
+
+        <a href="koh-samui.html" class="card">
+            <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1537956965359-7573183d1f57?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-overlay">
+                <span class="card-sub">Verified Guide</span>
+                <h2 class="card-title">Koh Samui</h2>
+            </div>
+        </a>
+        
+
+        <a href="ubud.html" class="card">
+            <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-overlay">
+                <span class="card-sub">Verified Guide</span>
+                <h2 class="card-title">Ubud</h2>
+            </div>
+        </a>
+        
+
+        <a href="tainan.html" class="card">
+            <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1508248467877-aed3237d2826?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-overlay">
+                <span class="card-sub">Verified Guide</span>
+                <h2 class="card-title">Tainan</h2>
+            </div>
+        </a>
+        
+
+        <a href="bali.html" class="card">
+            <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-overlay">
+                <span class="card-sub">Verified Guide</span>
+                <h2 class="card-title">Bali</h2>
+            </div>
+        </a>
+        
+
+        <a href="tokyo.html" class="card">
+            <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-overlay">
+                <span class="card-sub">Verified Guide</span>
+                <h2 class="card-title">Tokyo</h2>
+            </div>
+        </a>
+        
+
+        <a href="paris.html" class="card">
+            <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-overlay">
+                <span class="card-sub">Verified Guide</span>
+                <h2 class="card-title">Paris</h2>
+            </div>
+        </a>
+        
+
+        <a href="new-york.html" class="card">
+            <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-overlay">
+                <span class="card-sub">Verified Guide</span>
+                <h2 class="card-title">New York</h2>
+            </div>
+        </a>
+        
+
+        <a href="seoul.html" class="card">
+            <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-overlay">
+                <span class="card-sub">Verified Guide</span>
+                <h2 class="card-title">Seoul</h2>
+            </div>
+        </a>
+        
+
+        <a href="singapore.html" class="card">
+            <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-overlay">
+                <span class="card-sub">Verified Guide</span>
+                <h2 class="card-title">Singapore</h2>
+            </div>
+        </a>
+        
+
+        <a href="amsterdam.html" class="card">
+            <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-overlay">
+                <span class="card-sub">Verified Guide</span>
+                <h2 class="card-title">Amsterdam</h2>
+            </div>
+        </a>
+        
+
+        <a href="london.html" class="card">
+            <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-overlay">
+                <span class="card-sub">Verified Guide</span>
+                <h2 class="card-title">London</h2>
+            </div>
+        </a>
+        
+
+        <a href="kuala-lumpur.html" class="card">
+            <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1596422846543-75c6fc197f07?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-overlay">
+                <span class="card-sub">Verified Guide</span>
+                <h2 class="card-title">Kuala Lumpur</h2>
+            </div>
+        </a>
+        
+
+        <a href="berlin.html" class="card">
+            <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1560969184-10fe8719e047?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-overlay">
+                <span class="card-sub">Verified Guide</span>
+                <h2 class="card-title">Berlin</h2>
+            </div>
+        </a>
+        
+
+        <a href="barcelona.html" class="card">
+            <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-overlay">
+                <span class="card-sub">Verified Guide</span>
+                <h2 class="card-title">Barcelona</h2>
+            </div>
+        </a>
+        
     </div>
 </body>
 </html>
