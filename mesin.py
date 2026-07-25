@@ -31,17 +31,15 @@ updated_str = current_time.strftime("Updated %B %Y")
 
 for item in data_destinasi:
     nama_file = f"liburan-ke-{item['city'].lower().replace(' ', '-')}.html"
-    region_color = "#0071C2" if item['region'].lower() == 'europe' else "#008009"
-    trending_badge = '<span class="trending-badge">Trending 🔥</span>' if (len(item['city']) + len(item['country'])) % 3 == 0 else ''
+    kota_url = item['city'].replace(' ', '%20')
     link_halaman += f'''
             <a href="{nama_file}" class="card-link">
-                <div class="card">
-                    <div class="badges-row">
-                        <span class="region-badge" style="background-color: {region_color};">{item['region']}</span>
-                        {trending_badge}
+                <div class="card" style="background-image: url('https://source.unsplash.com/featured/?{kota_url},landmark');">
+                    <div class="card-gradient">
+                        <span class="region-badge">{item['region']}</span>
+                        <h3>{item["city"]}</h3>
+                        <p>{item["country"]}</p>
                     </div>
-                    <h3>{item["city"]}</h3>
-                    <p>{item["country"]}</p>
                 </div>
             </a>
 '''
@@ -82,33 +80,48 @@ for item in data_destinasi:
     </script>
     
     <style>
-        body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #FFFFFF; margin: 0; padding: 15px; color: #222222; line-height: 1.6; }}
-        .container {{ max-width: 800px; background: #FFFFFF; padding: 20px; margin: 0 auto; border: 1px solid #DDDDDD; }}
-        h1 {{ color: #000000; font-size: 26px; font-weight: 900; margin-bottom: 10px; line-height: 1.2; }}
-        h2 {{ color: #000000; font-size: 20px; font-weight: 800; margin-top: 35px; margin-bottom: 15px; border-bottom: 3px solid #0071C2; padding-bottom: 5px; }}
-        .badge {{ background-color: #008009; color: #FFFFFF; padding: 8px 16px; font-weight: 800; font-size: 14px; display: inline-block; margin-bottom: 20px; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,128,9,0.4); text-transform: uppercase; }}
-        .highlight {{ font-weight: 800; color: #CC0000; }}
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap');
+        body {{ font-family: 'Plus Jakarta Sans', sans-serif; background-color: #FAFAFA; margin: 0; padding: 0; color: #4A4A4A; line-height: 1.8; }}
         
-        .fomo-alert {{ background-color: #FFFDE7; color: #B71C1C; padding: 15px; border: 2px solid #FBC02D; margin: 25px 0; font-weight: 800; font-size: 16px; border-radius: 4px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }}
+        .hero-banner {{ height: 60vh; background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 20px; }}
+        .hero-content h1 {{ font-family: 'Playfair Display', serif; font-size: 3.5rem; color: #FFFFFF; margin: 0; text-shadow: 0 4px 12px rgba(0,0,0,0.4); letter-spacing: 1px; }}
+        .hero-subtitle {{ color: #F0F0F0; font-size: 1.1rem; font-weight: 500; margin-top: 15px; text-transform: uppercase; letter-spacing: 3px; }}
         
-        .hotel-tier {{ border: 2px solid #E5E5E5; margin-bottom: 20px; padding: 20px; background: #FAFAFA; border-radius: 6px; }}
-        .hotel-tier h3 {{ margin-top: 0; color: #333333; font-size: 16px; margin-bottom: 10px; font-weight: 800; text-transform: uppercase; }}
-        .hotel-name {{ font-size: 20px; font-weight: 900; color: #0071C2; margin-bottom: 15px; display: block; line-height: 1.2; }}
+        .container {{ max-width: 800px; background: #FFFFFF; padding: 60px 80px; margin: -60px auto 60px auto; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.04); position: relative; z-index: 10; }}
+        h2 {{ font-family: 'Playfair Display', serif; color: #2C3E50; font-size: 1.8rem; margin-top: 40px; margin-bottom: 20px; }}
         
-        .btn-box {{ margin: 15px 0; }}
-        .btn-box a {{ display: block; color: #FFFFFF; text-decoration: none; font-weight: 900; font-size: 18px; padding: 18px 10px; text-align: center; border-radius: 8px; box-shadow: 0 6px 0px rgba(0,0,0,0.2); transition: transform 0.1s, box-shadow 0.1s; text-transform: uppercase; }}
-        .btn-box a:active {{ transform: translateY(4px); box-shadow: 0 2px 0px rgba(0,0,0,0.2); }}
+        .badge {{ background-color: #F8F9FA; color: #2C3E50; padding: 8px 16px; font-weight: 600; font-size: 0.85rem; display: inline-block; margin-bottom: 25px; border-radius: 30px; border: 1px solid #E9ECEF; letter-spacing: 1px; }}
+        .highlight {{ font-weight: 600; color: #2C3E50; }}
         
-        .micro-copy {{ font-size: 12px; color: #555555; text-align: center; margin-top: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 5px; }}
+        .fomo-alert {{ background-color: #F8FAFC; color: #475569; padding: 18px 24px; border-left: 4px solid #94A3B8; margin: 30px 0; font-weight: 500; font-size: 1rem; border-radius: 0 8px 8px 0; display: flex; align-items: center; gap: 12px; }}
         
-        .tour-section {{ margin-top: 40px; padding-top: 20px; border-top: 2px solid #E5E5E5; }}
-        hr {{ border: 0; border-top: 2px solid #E5E5E5; margin: 30px 0; }}
-        .back-btn {{ color: #0071C2; text-decoration: underline; font-weight: 800; font-size: 16px; }}
+        .hotel-tier {{ border: 1px solid #F1F5F9; margin-bottom: 30px; padding: 35px; background: #FFFFFF; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); transition: transform 0.3s ease, box-shadow 0.3s ease; }}
+        .hotel-tier:hover {{ transform: translateY(-5px); box-shadow: 0 12px 25px rgba(0,0,0,0.04); }}
+        .hotel-tier h3 {{ margin-top: 0; color: #64748B; font-size: 0.9rem; margin-bottom: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; }}
+        .hotel-name {{ font-family: 'Playfair Display', serif; font-size: 1.6rem; color: #0F172A; margin-bottom: 25px; display: block; }}
+        
+        .btn-box {{ margin: 20px 0; }}
+        .btn-box a {{ display: block; color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 1rem; padding: 16px 20px; text-align: center; border-radius: 8px; transition: opacity 0.3s; letter-spacing: 1px; }}
+        .btn-box a:hover {{ opacity: 0.9; }}
+        
+        .micro-copy {{ font-size: 0.75rem; color: #94A3B8; text-align: center; margin-top: 15px; font-weight: 500; }}
+        
+        .tour-section {{ margin-top: 50px; padding-top: 40px; border-top: 1px solid #F1F5F9; text-align: center; }}
+        hr {{ border: 0; border-top: 1px solid #F1F5F9; margin: 50px 0; }}
+        .back-btn {{ color: #64748B; text-decoration: none; font-weight: 500; display: inline-flex; align-items: center; gap: 8px; transition: color 0.3s; }}
+        .back-btn:hover {{ color: #0F172A; }}
+        
+        @media (max-width: 768px) {{ .container {{ padding: 40px 25px; margin-top: -30px; }} .hero-content h1 {{ font-size: 2.5rem; }} }}
     </style>
 </head>
 <body>
+    <div class="hero-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('https://source.unsplash.com/featured/?{kota_url},landscape');">
+        <div class="hero-content">
+            <h1>Budget Travel Guide to {item['city']}</h1>
+            <p class="hero-subtitle">Updated {updated_str}</p>
+        </div>
+    </div>
     <div class="container">
-        <h1>Budget Travel Guide to {item['city']} ({updated_str})</h1>
         <div class="badge">✓ Local Expert Verified</div>
         
         <p>Looking for a vacation with <strong>perfect</strong> weather? <span class="highlight">{item['city']}</span> is the perfect destination for you!</p>
@@ -117,7 +130,7 @@ for item in data_destinasi:
         <p>Don't miss the chance to explore <strong>{item['main_attraction']}</strong>, the ultimate iconic spots in the city.</p>
         
         <div class="fomo-alert">
-            🔥 <strong>Urgent:</strong> 87% of accommodations in {item['city']} for upcoming dates are already booked! Secure your stay immediately.
+            <span style="font-size: 1.2em;">🔥</span> <strong>Urgent:</strong> 87% of accommodations in {item['city']} for upcoming dates are already booked! Secure your stay immediately.
         </div>
         
         <h2>Where to Stay in {item['city']} (Top Recommended Areas: City Center)</h2>
@@ -177,27 +190,36 @@ beranda_html = f"""<!DOCTYPE html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Global Travel Guide Portal</title>
     <style>
-        body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #FFFFFF; margin: 0; padding: 20px; color: #111111; }}
-        .container {{ max-width: 1200px; margin: 0 auto; padding: 10px; }}
-        h1 {{ text-align: center; font-size: 28px; font-weight: 900; color: #000000; margin-bottom: 5px; }}
-        .subtitle {{ text-align: center; color: #444444; font-size: 16px; margin-bottom: 30px; font-weight: 600; }}
-        .grid-container {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; }}
-        .card-link {{ text-decoration: none; color: inherit; display: block; }}
-        .card {{ background: #FFFFFF; border: 2px solid #E2E2E2; border-radius: 8px; padding: 15px; position: relative; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: border-color 0.2s; }}
-        .card:hover {{ border-color: #0071C2; }}
-        .card h3 {{ margin: 5px 0; font-size: 18px; font-weight: 800; color: #0071C2; }}
-        .card p {{ margin: 0; color: #333333; font-size: 14px; font-weight: 600; }}
-        .badges-row {{ display: flex; gap: 8px; margin-bottom: 8px; }}
-        .region-badge {{ padding: 3px 8px; border-radius: 4px; font-size: 12px; font-weight: 700; color: #FFFFFF; text-transform: uppercase; }}
-        .trending-badge {{ background-color: #CC0000; color: #FFFFFF; padding: 3px 8px; border-radius: 4px; font-size: 12px; font-weight: 700; text-transform: uppercase; animation: pulse 2s infinite; }}
-        @keyframes pulse {{ 0% {{ transform: scale(1); }} 50% {{ transform: scale(1.05); }} 100% {{ transform: scale(1); }} }}
-        @media (max-width: 600px) {{ .grid-container {{ grid-template-columns: 1fr; }} }}
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap');
+        body {{ font-family: 'Plus Jakarta Sans', sans-serif; background-color: #FAFAFA; margin: 0; padding: 0; color: #4A4A4A; }}
+        
+        .header-wrapper {{ background: #FFFFFF; padding: 60px 20px; text-align: center; border-bottom: 1px solid #F1F5F9; margin-bottom: 60px; }}
+        h1 {{ font-family: 'Playfair Display', serif; font-size: 2.8rem; color: #0F172A; margin: 0 0 15px 0; letter-spacing: 0.5px; }}
+        .subtitle {{ color: #64748B; font-size: 1.1rem; margin: 0; font-weight: 400; max-width: 600px; margin: 0 auto; line-height: 1.6; }}
+        
+        .container {{ max-width: 1400px; margin: 0 auto; padding: 0 40px 80px 40px; }}
+        .grid-container {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; }}
+        
+        .card-link {{ text-decoration: none; color: inherit; display: block; outline: none; }}
+        .card {{ height: 420px; background-size: cover; background-position: center; border-radius: 16px; position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease; }}
+        .card:hover {{ transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }}
+        
+        .card-gradient {{ position: absolute; bottom: 0; left: 0; right: 0; height: 60%; background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 60%, transparent 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 30px; }}
+        
+        .card h3 {{ font-family: 'Playfair Display', serif; font-size: 1.8rem; color: #FFFFFF; margin: 0 0 5px 0; letter-spacing: 0.5px; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }}
+        .card p {{ margin: 0; color: #E2E8F0; font-size: 0.95rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; }}
+        
+        .region-badge {{ display: inline-block; padding: 6px 12px; border-radius: 30px; font-size: 0.7rem; font-weight: 600; color: #FFFFFF; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.4); align-self: flex-start; backdrop-filter: blur(4px); }}
+        
+        @media (max-width: 768px) {{ .container {{ padding: 0 20px 60px 20px; }} .card {{ height: 350px; }} h1 {{ font-size: 2.2rem; }} }}
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="header-wrapper">
         <h1>Global Travel Guide Portal</h1>
-        <p class="subtitle">Discover Local Expert Verified travel guides to major cities worldwide.</p>
+        <p class="subtitle">Discover hand-curated, Local Expert Verified travel guides to the world's most extraordinary destinations.</p>
+    </div>
+    <div class="container">
         <div class="grid-container">
             {link_halaman}
         </div>
