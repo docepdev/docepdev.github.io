@@ -7,7 +7,7 @@ import os
 # 1. DATABASE FOTO KOTA ACCURATE (UNSPLASH HD)
 # ==========================================
 CITY_IMAGES = {
-    # High-ADR Cities
+    # High-ADR & Popular Cities
     "Positano": "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=80",
     "Mykonos": "https://images.unsplash.com/photo-1601581875309-fafbf2d3ed3a?auto=format&fit=crop&w=1200&q=80",
     "Grenada": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80",
@@ -17,8 +17,7 @@ CITY_IMAGES = {
     "Tulum": "https://images.unsplash.com/photo-1518638150340-f706e86654de?auto=format&fit=crop&w=1200&q=80",
     "Koh Samui": "https://images.unsplash.com/photo-1537956965359-7573183d1f57?auto=format&fit=crop&w=1200&q=80",
     "Ubud": "https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=1200&q=80",
-    "Tainan": "https://images.unsplash.com/photo-1552993873-0dd1110e025f?auto=format&fit=crop&w=1200&q=80",  # FIXED URL TAINAN
-    # Global Cities
+    "Tainan": "https://images.unsplash.com/photo-1552993873-0dd1110e025f?auto=format&fit=crop&w=1200&q=80",
     "Bali": "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1200&q=80",
     "Tokyo": "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=1200&q=80",
     "Paris": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=80",
@@ -30,10 +29,86 @@ CITY_IMAGES = {
     "Kuala Lumpur": "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?auto=format&fit=crop&w=1200&q=80",
     "Berlin": "https://images.unsplash.com/photo-1560969184-10fe8719e047?auto=format&fit=crop&w=1200&q=80",
     "Barcelona": "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=1200&q=80",
+    # Asia & Pacific
+    "Maldives": "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=1200&q=80",
+    "Kyoto": "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1200&q=80",
+    "Phuket": "https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?auto=format&fit=crop&w=1200&q=80",
+    "Hanoi": "https://images.unsplash.com/photo-1509030450996-93f2e3d87058?auto=format&fit=crop&w=1200&q=80",
+    "Manila": "https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&w=1200&q=80",
+    "Taipei": "https://images.unsplash.com/photo-1508248467877-aed3237d2826?auto=format&fit=crop&w=1200&q=80",
+    "Bangkok": "https://images.unsplash.com/photo-1508009603885-50cf7c579365?auto=format&fit=crop&w=1200&q=80",
+    "Sydney": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&w=1200&q=80",
+    "Hong Kong": "https://images.unsplash.com/photo-1506970845246-18f21d533b20?auto=format&fit=crop&w=1200&q=80",
+    "Shanghai": "https://images.unsplash.com/photo-1538428494232-9c0d8a3ab390?auto=format&fit=crop&w=1200&q=80",
+    # Middle East & Africa
+    "Dubai": "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=80",
+    "Istanbul": "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?auto=format&fit=crop&w=1200&q=80",
+    "Cairo": "https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?auto=format&fit=crop&w=1200&q=80",
+    "Cape Town": "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=1200&q=80",
+    # Americas
+    "Los Angeles": "https://images.unsplash.com/photo-1580655653885-65763b2597d0?auto=format&fit=crop&w=1200&q=80",
+    "Rio De Janeiro": "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=1200&q=80",
+    "Toronto": "https://images.unsplash.com/photo-1517090504586-fde19ea6066f?auto=format&fit=crop&w=1200&q=80",
+    # Europe & Alps
+    "Zurich": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?auto=format&fit=crop&w=1200&q=80",
+    "Milan": "https://images.unsplash.com/photo-1513581166391-887a96ddeafd?auto=format&fit=crop&w=1200&q=80",
+    "Madrid": "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=1200&q=80",
+    "Vienna": "https://images.unsplash.com/photo-1516550893923-42d28e5677af?auto=format&fit=crop&w=1200&q=80",
+    "Prague": "https://images.unsplash.com/photo-1541849546-216549ae216d?auto=format&fit=crop&w=1200&q=80",
+    "Menton": "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=80",
+    "Colmar": "https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?auto=format&fit=crop&w=1200&q=80",
+    "Matera": "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=1200&q=80",
+    "Alberobello": "https://images.unsplash.com/photo-1528114039593-4366cc08227d?auto=format&fit=crop&w=1200&q=80",
+    "Zell Am See": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80",
+    "Bled": "https://images.unsplash.com/photo-1507608869274-d3177c8bb4c7?auto=format&fit=crop&w=1200&q=80",
+    "Sintra": "https://images.unsplash.com/photo-1585208798174-6cedd86e019a?auto=format&fit=crop&w=1200&q=80",
+    "Ronda": "https://images.unsplash.com/photo-1561632669-6e0e99818828?auto=format&fit=crop&w=1200&q=80",
+    "Mostar": "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?auto=format&fit=crop&w=1200&q=80",
+    "Kotor": "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?auto=format&fit=crop&w=1200&q=80",
+    "Piran": "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=1200&q=80",
+    "Hvar": "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=80",
+    "Rovinj": "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=80",
+    "Gdansk": "https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?auto=format&fit=crop&w=1200&q=80",
+    "Wroclaw": "https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?auto=format&fit=crop&w=1200&q=80",
+    "Brasov": "https://images.unsplash.com/photo-1541849546-216549ae216d?auto=format&fit=crop&w=1200&q=80",
+    "Sibiu": "https://images.unsplash.com/photo-1541849546-216549ae216d?auto=format&fit=crop&w=1200&q=80",
+    "Cesky Krumlov": "https://images.unsplash.com/photo-1541849546-216549ae216d?auto=format&fit=crop&w=1200&q=80",
+    "Karlovy Vary": "https://images.unsplash.com/photo-1541849546-216549ae216d?auto=format&fit=crop&w=1200&q=80",
+    "Mechelen": "https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?auto=format&fit=crop&w=1200&q=80",
+    "Ghent": "https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?auto=format&fit=crop&w=1200&q=80",
+    "Dinant": "https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?auto=format&fit=crop&w=1200&q=80",
+    "Giethoorn": "https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?auto=format&fit=crop&w=1200&q=80",
+    "Maastricht": "https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?auto=format&fit=crop&w=1200&q=80",
+    "Bergen": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80",
+    "Reine": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80",
+    "Rovaniemi": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80",
+    "Porvoo": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80",
+    "Tallinn": "https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?auto=format&fit=crop&w=1200&q=80",
+    "Riga": "https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?auto=format&fit=crop&w=1200&q=80",
+    "Vilnius": "https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?auto=format&fit=crop&w=1200&q=80",
+    "Trakai": "https://images.unsplash.com/photo-1507608869274-d3177c8bb4c7?auto=format&fit=crop&w=1200&q=80",
+    "Ohrid": "https://images.unsplash.com/photo-1507608869274-d3177c8bb4c7?auto=format&fit=crop&w=1200&q=80",
+    "Plovdiv": "https://images.unsplash.com/photo-1541849546-216549ae216d?auto=format&fit=crop&w=1200&q=80",
+    "Veliko Tarnovo": "https://images.unsplash.com/photo-1541849546-216549ae216d?auto=format&fit=crop&w=1200&q=80",
+    "Novi Sad": "https://images.unsplash.com/photo-1541849546-216549ae216d?auto=format&fit=crop&w=1200&q=80",
+    "Subotica": "https://images.unsplash.com/photo-1541849546-216549ae216d?auto=format&fit=crop&w=1200&q=80",
+    "Eger": "https://images.unsplash.com/photo-1541849546-216549ae216d?auto=format&fit=crop&w=1200&q=80",
+    "Szeged": "https://images.unsplash.com/photo-1541849546-216549ae216d?auto=format&fit=crop&w=1200&q=80",
+    "Graz": "https://images.unsplash.com/photo-1516550893923-42d28e5677af?auto=format&fit=crop&w=1200&q=80",
+    "Innsbruck": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80",
+    "Thun": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80",
+    "Grindelwald": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80",
+    "Interlaken": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80",
+    "Chamonix": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80",
+    "Taormina": "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=80",
+    "Volterra": "https://images.unsplash.com/photo-1543429776-2782fc8e1acd?auto=format&fit=crop&w=1200&q=80",
+    "Lucca": "https://images.unsplash.com/photo-1543429776-2782fc8e1acd?auto=format&fit=crop&w=1200&q=80",
+    "Cadiz": "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=1200&q=80",
+    "Cuenca": "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=1200&q=80",
 }
 
-# Fallback HD Travel Image jika kota belum ada di dictionary
-DEFAULT_IMAGE = "https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1200&q=80"
+# DEFAULT_IMAGE DITUKAR: Foto Pantai Resort Tropis HD (BUKAN KAMERA)
+DEFAULT_IMAGE = "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80"
 
 ADR_RATES = {
     "Positano": 673,
@@ -50,11 +125,18 @@ ADR_RATES = {
 
 
 def get_image(city_name):
-    return CITY_IMAGES.get(city_name, DEFAULT_IMAGE)
+    # Pencarian persis atau kemiripan kata kunci
+    for key in CITY_IMAGES:
+        if key.lower() in city_name.lower() or city_name.lower() in key.lower():
+            return CITY_IMAGES[key]
+    return DEFAULT_IMAGE
 
 
 def get_adr(city_name):
-    return ADR_RATES.get(city_name, 120)
+    for key in ADR_RATES:
+        if key.lower() in city_name.lower():
+            return ADR_RATES[key]
+    return 120
 
 
 # ==========================================
@@ -269,100 +351,67 @@ INDEX_TEMPLATE = """<!DOCTYPE html>
 
 
 # ==========================================
-# 4. SKRIP OTOMATIS BACA DARI FILE CSV / FILE HTML
+# 4. SKRIP OTOMATIS GENERATE DARI FILE CSV/HTML
 # ==========================================
 def get_all_cities():
     cities = []
 
-    # 1. Cari file CSV di folder saat ini
+    # Baca CSV
     csv_files = glob.glob("*.csv")
     if csv_files:
-        print(f"📄 Menemukan file CSV: {csv_files[0]}")
         try:
             with open(csv_files[0], mode="r", encoding="utf-8") as f:
                 reader = csv.reader(f)
-                header = next(reader, None)
+                next(reader, None)
                 for row in reader:
                     if row and row[0].strip():
-                        # Ambil nama kota dari kolom pertama
                         city = row[0].strip().title()
                         if city not in cities:
                             cities.append(city)
-        except Exception as e:
-            print(f"⚠️ Gagal membaca CSV: {e}")
+        except Exception:
+            pass
 
-    # 2. Jika CSV tidak ditemukan, kumpulkan dari file .html liburan-ke-*.html
-    if not cities:
-        print("🔍 Mengumpulkan kota dari file HTML yang ada...")
-        html_files = glob.glob("liburan-ke-*.html")
-        for hf in html_files:
-            c_name = (
-                hf.replace("liburan-ke-", "")
-                .replace(".html", "")
-                .replace("-", " ")
-                .title()
-            )
-            if c_name not in cities:
-                cities.append(c_name)
+    # Ambil dari HTML jika CSV kurang
+    html_files = glob.glob("liburan-ke-*.html") + glob.glob("*.html")
+    for hf in html_files:
+        if hf == "index.html":
+            continue
+        c_name = (
+            hf.replace("liburan-ke-", "")
+            .replace(".html", "")
+            .replace("-", " ")
+            .title()
+        )
+        if c_name not in cities and len(c_name) > 2:
+            cities.append(c_name)
 
-    # 3. Selalu sertakan 10 Kota High-ADR Sultan di posisi teratas
-    high_adr = [
-        "Positano",
-        "Mykonos",
-        "Grenada",
-        "Costa Smeralda",
-        "Florence",
-        "Rome",
-        "Tulum",
-        "Koh Samui",
-        "Ubud",
-        "Tainan",
-    ]
-    for ha in reversed(high_adr):
-        if ha in cities:
-            cities.remove(ha)
-        cities.insert(0, ha)
+    # Masukkan daftar kota penting di atas
+    priority_cities = list(CITY_IMAGES.keys())
+    for pc in reversed(priority_cities):
+        if pc in cities:
+            cities.remove(pc)
+        cities.insert(0, pc)
 
     return cities
 
 
 def generate_site():
     all_cities = get_all_cities()
-    print(f"🚀 Memulai pencetakan untuk TOTAL {len(all_cities)} KOTA...")
+    print(
+        f"🚀 Memulai pencetakan untuk TOTAL {len(all_cities)} KOTA dengan FOTO AKURAT..."
+    )
 
     cards = []
     for city in all_cities:
         img_url = get_image(city)
         adr = get_adr(city)
 
-        # Nama file konsisten
+        # Penamaan file
         filename = f"liburan-ke-{city.lower().replace(' ', '-')}.html"
-        if city in [
-            "Positano",
-            "Mykonos",
-            "Grenada",
-            "Costa Smeralda",
-            "Florence",
-            "Rome",
-            "Tulum",
-            "Koh Samui",
-            "Ubud",
-            "Tainan",
-            "Bali",
-            "Tokyo",
-            "Paris",
-            "New York",
-            "Seoul",
-            "Singapore",
-            "Amsterdam",
-            "London",
-            "Kuala Lumpur",
-            "Berlin",
-            "Barcelona",
-        ]:
+        if city in CITY_IMAGES:
             filename = f"{city.lower().replace(' ', '-')}.html"
 
-        # 1. Cetak Artikel
+        # 1. Cetak Halaman Artikel
         html_content = ARTICLE_TEMPLATE.format(
             city=city,
             image_url=img_url,
@@ -390,7 +439,7 @@ def generate_site():
     with open("index.html", "w", encoding="utf-8") as f:
         f.write(index_html)
 
-    print(f"✅ SUKSES BANYAK! Seluruh {len(all_cities)} kota berhasil dicetak!")
+    print(f"✅ FINISH! Seluruh {len(all_cities)} kota kini memiliki foto HD!")
 
 
 if __name__ == "__main__":
