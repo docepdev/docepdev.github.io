@@ -34,7 +34,7 @@ for item in data_destinasi:
     kota_url = item['city'].replace(' ', '%20')
     link_halaman += f'''
             <a href="{nama_file}" class="card-link">
-                <div class="card" style="background-image: url('https://source.unsplash.com/featured/?{kota_url},landmark');">
+                <div class="card" style="background-image: url('https://picsum.photos/seed/{kota_url}/600/800');">
                     <div class="card-gradient">
                         <span class="region-badge">{item['region']}</span>
                         <h3>{item["city"]}</h3>
@@ -115,7 +115,7 @@ for item in data_destinasi:
     </style>
 </head>
 <body>
-    <div class="hero-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('https://source.unsplash.com/featured/?{kota_url},landscape');">
+    <div class="hero-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('https://picsum.photos/seed/{kota_url}banner/1600/900');">
         <div class="hero-content">
             <h1>Budget Travel Guide to {item['city']}</h1>
             <p class="hero-subtitle">Updated {updated_str}</p>
