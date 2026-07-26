@@ -4,10 +4,9 @@ import os
 import re
 
 # ==========================================
-# 1. MAPPING FOTO AKURAT 100% (UNSPLASH VERIFIED)
+# 1. DATABASE GAMBAR (SHANGHAI & TAINAN FIXED)
 # ==========================================
 CITY_IMAGES = {
-    # High-ADR Sultan Cities
     "Positano": "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=80",
     "Mykonos": "https://images.unsplash.com/photo-1601581875309-fafbf2d3ed3a?auto=format&fit=crop&w=1200&q=80",
     "Grenada": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80",
@@ -18,7 +17,6 @@ CITY_IMAGES = {
     "Koh Samui": "https://images.unsplash.com/photo-1537956965359-7573183d1f57?auto=format&fit=crop&w=1200&q=80",
     "Ubud": "https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=1200&q=80",
     "Tainan": "https://images.unsplash.com/photo-1552993873-0dd1110e025f?auto=format&fit=crop&w=1200&q=80",
-    # Global Cities
     "Bali": "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1200&q=80",
     "Tokyo": "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=1200&q=80",
     "Paris": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=80",
@@ -39,16 +37,14 @@ CITY_IMAGES = {
     "Bangkok": "https://images.unsplash.com/photo-1508009603885-50cf7c579365?auto=format&fit=crop&w=1200&q=80",
     "Sydney": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&w=1200&q=80",
     "Hong Kong": "https://images.unsplash.com/photo-1506970845246-18f21d533b20?auto=format&fit=crop&w=1200&q=80",
-    "Shanghai": "https://images.unsplash.com/photo-1538428494232-9c0d8a3ab390?auto=format&fit=crop&w=1200&q=80",
+    "Shanghai": "https://images.unsplash.com/photo-1549693578-cbc29953b05a?auto=format&fit=crop&w=1200&q=80", # SHANGHAI FIXED
     "Dubai": "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=80",
     "Istanbul": "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?auto=format&fit=crop&w=1200&q=80",
     "Cairo": "https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?auto=format&fit=crop&w=1200&q=80",
-    # FIX: Cape Town (Table Mountain)
     "Cape Town": "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=1200&q=80",
     "Los Angeles": "https://images.unsplash.com/photo-1580655653885-65763b2597d0?auto=format&fit=crop&w=1200&q=80",
     "Rio De Janeiro": "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=1200&q=80",
     "Toronto": "https://images.unsplash.com/photo-1517090504586-fde19ea6066f?auto=format&fit=crop&w=1200&q=80",
-    # FIX: Zurich (Swiss Lake & Alps)
     "Zurich": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?auto=format&fit=crop&w=1200&q=80",
     "Milan": "https://images.unsplash.com/photo-1513581166391-887a96ddeafd?auto=format&fit=crop&w=1200&q=80",
     "Madrid": "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=1200&q=80",
@@ -59,11 +55,9 @@ CITY_IMAGES = {
     "Matera": "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=1200&q=80",
     "Alberobello": "https://images.unsplash.com/photo-1528114039593-4366cc08227d?auto=format&fit=crop&w=1200&q=80",
     "Zell Am See": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80",
-    # FIX: Bled (Gereja & Danau Bled)
     "Bled": "https://images.unsplash.com/photo-1507608869274-d3177c8bb4c7?auto=format&fit=crop&w=1200&q=80",
     "Sintra": "https://images.unsplash.com/photo-1585208798174-6cedd86e019a?auto=format&fit=crop&w=1200&q=80",
     "Ronda": "https://images.unsplash.com/photo-1561632669-6e0e99818828?auto=format&fit=crop&w=1200&q=80",
-    # FIX: Mostar & Kotor (Jembatan & Teluk)
     "Mostar": "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?auto=format&fit=crop&w=1200&q=80",
     "Kotor": "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?auto=format&fit=crop&w=1200&q=80",
     "Piran": "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=1200&q=80",
@@ -106,76 +100,37 @@ CITY_IMAGES = {
     "Lucca": "https://images.unsplash.com/photo-1543429776-2782fc8e1acd?auto=format&fit=crop&w=1200&q=80",
     "Cadiz": "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=1200&q=80",
     "Cuenca": "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=1200&q=80",
-    # Specific Long-tail Niche Destinations
     "Tropea": "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=80",
-    "Phu Quoc": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80",
-    "Laos": "https://images.unsplash.com/photo-1528181304800-259b08848526?auto=format&fit=crop&w=1200&q=80",
-    "Milos": "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=1200&q=80",
-    "Lecce": "https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=1200&q=80",
-    "Mui Ne": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
-    "Sa Pa": "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=1200&q=80",
-    "Lombok": "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1200&q=80",
-    "Tartu": "https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?auto=format&fit=crop&w=1200&q=80",
-    "Faro": "https://images.unsplash.com/photo-1555881400-74d7acaacd8b?auto=format&fit=crop&w=1200&q=80",
-    "Semporna": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80",
-    "Ksamil": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
-    "Kampot": "https://images.unsplash.com/photo-1528181304800-259b08848526?auto=format&fit=crop&w=1200&q=80",
-    "Luang Prabang": "https://images.unsplash.com/photo-1528181304800-259b08848526?auto=format&fit=crop&w=1200&q=80",
-    "Port Barton": "https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&w=1200&q=80",
-    "Ischia": "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=80",
-    "Gili Air": "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1200&q=80",
-    "Naxos": "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=1200&q=80",
-    "Chiang Rai": "https://images.unsplash.com/photo-1508009603885-50cf7c579365?auto=format&fit=crop&w=1200&q=80",
-    "Labuan Bajo": "https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=1200&q=80",
     "Coron": "https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&w=1200&q=80",
 }
+DEFAULT_IMAGE = "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80"
 
-DEFAULT_IMAGE = "https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1200&q=80"
-
-
-def clean_title_and_get_image(raw_title):
-    """Fungsi pintar mengambil nama lokasi dari judul panjang artikel"""
+def get_image_and_shortname(raw_title):
     title_clean = raw_title.replace("liburan-ke-", "").replace(".html", "").replace("-", " ").title().strip()
-    
-    # Cari kecocokan kata kunci lokasi dari dictionary
-    for location, img_url in CITY_IMAGES.items():
-        if location.lower() in title_clean.lower():
-            return location, img_url
+    for loc, img_url in CITY_IMAGES.items():
+        if loc.lower() in title_clean.lower():
+            return loc, img_url
             
-    # Jika judul artikel panjang (contoh: 'Best Cheap Stays In Tartu'), ekstrak kata kunci lokasi
     short_title = title_clean
     if len(title_clean.split()) > 3:
-        # Potong menjadi nama lokasi yang lebih bersih untuk kartu beranda
         match = re.search(r'(?:In|Near|For)\s+([A-Za-z\s]+)$', title_clean, re.IGNORECASE)
         if match:
             short_title = match.group(1).strip()
-
     return short_title, DEFAULT_IMAGE
 
 
 # ==========================================
-# 2. TEMPLATE HTML ARTICLE
+# 2. TEMPLATE ARTIKEL DINAMIS (MENERIMA DATA DARI CSV)
 # ==========================================
 ARTICLE_TEMPLATE = """<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Where to Stay in {city} Without a Car (2026 Guide)</title>
-    <meta name="description" content="Best walkable areas and hotels in {city}. Verified local guide for 2026.">
+    <title>{full_title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <script type="application/ld+json">
-    {{
-      "@context": "https://schema.org",
-      "@type": "TouristDestination",
-      "name": "{city}",
-      "description": "Best places to stay in {city} without a car.",
-      "image": "{image_url}"
-    }}
-    </script>
     
     <style>
         * {{ box-sizing: border-box; margin: 0; padding: 0; }}
@@ -184,7 +139,7 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
         
         .hero {{
             position: relative;
-            min-height: 75vh;
+            min-height: 65vh;
             background: linear-gradient(180deg, rgba(15,23,42,0.3) 0%, rgba(15,23,42,0.85) 100%), url('{image_url}') center/cover no-repeat;
             display: flex;
             align-items: flex-end;
@@ -194,61 +149,34 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
         .hero-content {{ max-width: 900px; margin: 0 auto; width: 100%; }}
         .badge-bar {{ display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1rem; }}
         .badge {{ background: rgba(255,255,255,0.2); backdrop-filter: blur(8px); padding: 0.35rem 0.85rem; border-radius: 50px; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; border: 1px solid rgba(255,255,255,0.3); }}
-        .badge-gold {{ background: #f59e0b; color: #000; border: none; font-weight: 700; }}
-        .hero h1 {{ font-size: 2.75rem; font-weight: 800; line-height: 1.2; margin-bottom: 0.75rem; color: #ffffff; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }}
-        .price-anchor {{ font-size: 1.25rem; font-weight: 600; color: #cbd5e1; margin-bottom: 1.5rem; }}
-        .price-anchor span {{ color: #38bdf8; font-weight: 700; }}
+        .hero h1 {{ font-size: 2.75rem; font-weight: 800; line-height: 1.2; margin-bottom: 1.5rem; color: #ffffff; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }}
         
-        .search-widget {{
-            background: #ffffff;
-            border-radius: 16px;
-            padding: 1.25rem;
-            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            align-items: center;
-            margin-top: 1rem;
-        }}
-        .widget-input {{ background: #f1f5f9; border: 1px solid #e2e8f0; padding: 0.75rem 1rem; border-radius: 8px; font-family: inherit; font-size: 0.9rem; width: 100%; }}
         .btn-cta {{
             background: #2563eb;
             color: #ffffff;
             font-weight: 700;
-            padding: 0.85rem 1.5rem;
+            padding: 1rem 2rem;
             border-radius: 10px;
             text-decoration: none;
-            text-align: center;
             display: inline-block;
             transition: all 0.2s ease;
-            min-height: 44px;
             border: none;
             cursor: pointer;
+            font-size: 1.1rem;
         }}
         .btn-cta:hover {{ background: #1d4ed8; transform: translateY(-2px); }}
         
-        .container {{ max-width: 900px; margin: 3rem auto; padding: 0 1.5rem; }}
-        .section-title {{ font-size: 2rem; margin-bottom: 1.5rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; }}
+        .container {{ max-width: 900px; margin: 3rem auto; padding: 0 1.5rem; font-size: 1.1rem; color: #334155; }}
         
-        .hotel-carousel {{ display: flex; gap: 1.5rem; overflow-x: auto; padding-bottom: 1.5rem; scroll-snap-type: x mandatory; }}
-        .hotel-card {{
-            flex: 0 0 300px;
-            scroll-snap-align: start;
-            background: #ffffff;
-            border-radius: 12px;
-            border: 1px solid #e2e8f0;
-            padding: 1.25rem;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }}
-        .hotel-card h3 {{ font-size: 1.25rem; margin-bottom: 0.5rem; }}
-        .hotel-price {{ font-weight: 700; color: #059669; font-size: 1.1rem; margin-bottom: 1rem; }}
+        /* Styling untuk konten asli dari CSV/HTML lu */
+        .container h2, .container h3 {{ margin-top: 2rem; margin-bottom: 1rem; }}
+        .container p {{ margin-bottom: 1.25rem; }}
+        .container ul, .container ol {{ margin-bottom: 1.5rem; padding-left: 1.5rem; }}
+        .container a {{ color: #2563eb; font-weight: 600; text-decoration: none; }}
+        .container a:hover {{ text-decoration: underline; }}
         
         @media (max-width: 768px) {{
             .hero h1 {{ font-size: 2rem; }}
-            .hotel-card {{ flex: 0 0 85%; }}
         }}
     </style>
 </head>
@@ -257,52 +185,19 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
     <header class="hero">
         <div class="hero-content">
             <div class="badge-bar">
-                <span class="badge badge-gold">Agoda Preferred Partner</span>
-                <span class="badge">Verified 2026 Guide</span>
-                <span class="badge">⭐ 4.9/5 Rating</span>
+                <span class="badge" style="background: #f59e0b; color: #000; border: none;">Verified 2026 Guide</span>
             </div>
-            <h1>Best Places to Stay in {city} Without a Car</h1>
-            <p class="price-anchor">Top walkable neighborhoods • Prices from <span>$120/night</span></p>
+            <!-- JUDUL ASLI DARI CSV DIMASUKKAN KE SINI -->
+            <h1>{full_title}</h1>
             
-            <div class="search-widget">
-                <div>
-                    <label style="font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase;">Destination</label>
-                    <input type="text" class="widget-input" value="{city}" readonly>
-                </div>
-                <div>
-                    <label style="font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase;">Check-in / Guests</label>
-                    <input type="text" class="widget-input" value="2 Adults • Upcoming Dates" readonly>
-                </div>
-                <a href="https://emrldtp.com/cl/YOUR_AFFILIATE_CODE" target="_blank" class="btn-cta">Check Dates & Reserve</a>
-            </div>
+            <!-- TOMBOL CTA MEMAKAI LINK AFILIASI ASLI DARI CSV -->
+            <a href="{affiliate_link}" target="_blank" class="btn-cta">Check Dates & Reserve</a>
         </div>
     </header>
 
     <main class="container">
-        <h2 class="section-title">Top Walkable Stays in {city}</h2>
-        
-        <div class="hotel-carousel">
-            <div class="hotel-card">
-                <div>
-                    <h3>Luxury Center Hotel</h3>
-                    <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 0.5rem;">Prime Location • 100m from Transit</p>
-                    <p class="hotel-price">From $210/night</p>
-                </div>
-                <a href="https://emrldtp.com/cl/YOUR_AFFILIATE_CODE" target="_blank" class="btn-cta">Check Availability on Agoda</a>
-            </div>
-            <div class="hotel-card">
-                <div>
-                    <h3>Boutique Walkable Stay</h3>
-                    <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 0.5rem;">Cozy • High Speed Wi-Fi</p>
-                    <p class="hotel-price">From $120/night</p>
-                </div>
-                <a href="https://emrldtp.com/cl/YOUR_AFFILIATE_CODE" target="_blank" class="btn-cta">Check Availability on Agoda</a>
-            </div>
-        </div>
-        
-        <p style="margin-top: 2rem; color: #475569;">
-            Visiting {city} without a vehicle is a seamless experience when staying in central zones. Enjoy walking proximity to historic landmarks, local dining, and top transit hubs.
-        </p>
+        <!-- KONTEN ASLI DARI CSV DIMASUKKAN KE SINI -->
+        {csv_content}
     </main>
 
 </body>
@@ -310,7 +205,7 @@ ARTICLE_TEMPLATE = """<!DOCTYPE html>
 """
 
 # ==========================================
-# 3. TEMPLATE INDEX.HTML
+# 3. TEMPLATE INDEX.HTML (MENAMPILKAN JUDUL PENDEK AGAR RAPI)
 # ==========================================
 INDEX_TEMPLATE = """<!DOCTYPE html>
 <html lang="en">
@@ -363,51 +258,81 @@ INDEX_TEMPLATE = """<!DOCTYPE html>
 </html>
 """
 
-
 # ==========================================
-# 4. SKRIP UTAMA
+# 4. SKRIP UTAMA: MEMBACA CSV DAN MENCETAK ULANG
 # ==========================================
-def generate_site():
-    print("🚀 Memulai proses perbaikan total 80+ halaman pSEO...")
-
-    # Ambil seluruh file HTML
-    all_files = glob.glob("*.html")
+def generate_site_from_csv():
+    print("🚀 Menganalisis file CSV untuk menarik data asli...")
+    
+    csv_files = glob.glob("*.csv")
+    if not csv_files:
+        print("❌ File CSV tidak ditemukan di folder ini! Pastikan file CSV lu ada.")
+        return
+        
+    csv_file = csv_files[0]
+    print(f"📄 Membaca data dari: {csv_file}")
+    
     cards = []
-
-    # Filter agar index.html tidak diproses sebagai kartu
-    target_files = [f for f in all_files if f != "index.html"]
-
-    for filename in target_files:
-        raw_name = filename.replace(".html", "")
-        display_title, img_url = clean_title_and_get_image(raw_name)
-
-        # 1. Cetak Ulang Artikel
-        html_content = ARTICLE_TEMPLATE.format(
-            city=display_title, image_url=img_url
-        )
-        with open(filename, "w", encoding="utf-8") as f:
-            f.write(html_content)
-
-        # 2. Susun Kartu Index
-        cards.append(
-            f"""
-        <a href="{filename}" class="card">
-            <div class="card-bg" style="background-image: url('{img_url}');"></div>
-            <div class="card-overlay">
-                <span class="card-sub">Verified Guide</span>
-                <h2 class="card-title">{display_title}</h2>
-            </div>
-        </a>
-        """
-        )
-
-    # 3. Cetak index.html
+    
+    with open(csv_file, mode="r", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        
+        # Mendeteksi nama kolom secara otomatis (karena format CSV bisa beda-beda)
+        headers = reader.fieldnames
+        title_col = next((c for c in headers if c.lower() in ['title', 'keyword', 'destination', 'kota']), headers[0])
+        link_col = next((c for c in headers if c.lower() in ['url', 'link', 'affiliate_link', 'affiliate url', 'travelpayouts']), None)
+        content_col = next((c for c in headers if c.lower() in ['content', 'body', 'artikel', 'description', 'text']), None)
+        
+        count = 0
+        for row in reader:
+            full_title = row.get(title_col, "").strip()
+            if not full_title:
+                continue
+                
+            # Tarik Link Afiliasi dari CSV (jika kosong, baru pakai default)
+            affiliate_link = row.get(link_col, "").strip() if link_col else ""
+            if not affiliate_link:
+                affiliate_link = "https://emrldtp.com/cl/YOUR_DEFAULT_CODE"
+                
+            # Tarik Konten Asli dari CSV
+            csv_content = row.get(content_col, "").strip() if content_col else ""
+            if not csv_content:
+                csv_content = f"<p>Welcome to our verified guide for <strong>{full_title}</strong>. Check availability and prices by clicking the reserve button above to get the best deals for your upcoming trip.</p>"
+            
+            # Buat Nama File (Slug)
+            filename = f"{full_title.lower().replace(' ', '-').replace(',', '').replace('?', '')}.html"
+            
+            # Dapatkan Gambar dan Nama Pendek untuk Kartu Beranda
+            short_name, img_url = get_image_and_shortname(full_title)
+            
+            # 1. Cetak Ulang Artikel (Memasukkan Judul, Konten, & Link Asli!)
+            html_content = ARTICLE_TEMPLATE.format(
+                full_title=full_title,
+                image_url=img_url,
+                affiliate_link=affiliate_link,
+                csv_content=csv_content
+            )
+            with open(filename, "w", encoding="utf-8") as out_f:
+                out_f.write(html_content)
+                
+            # 2. Susun Kartu Beranda
+            cards.append(f"""
+            <a href="{filename}" class="card">
+                <div class="card-bg" style="background-image: url('{img_url}');"></div>
+                <div class="card-overlay">
+                    <span class="card-sub">Verified Guide</span>
+                    <h2 class="card-title">{short_name}</h2>
+                </div>
+            </a>
+            """)
+            count += 1
+            
+    # 3. Cetak Beranda (index.html)
     index_html = INDEX_TEMPLATE.format(cards_html="\n".join(cards))
     with open("index.html", "w", encoding="utf-8") as f:
         f.write(index_html)
-
-    print(f"✅ FINISH! Total {len(target_files)} kartu berhasil diperbaiki!")
-
+        
+    print(f"✅ FINISH! Berhasil mencetak ulang {count} halaman menggunakan Data & Link Afiliasi ASLI dari CSV!")
 
 if __name__ == "__main__":
-    generate_site()
+    generate_site_from_csv()
